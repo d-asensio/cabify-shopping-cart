@@ -1,3 +1,4 @@
+const fs = require('fs')
 const path = require('path')
 
 const {
@@ -6,18 +7,23 @@ const {
   NoEmitOnErrorsPlugin
 } = require('webpack')
 
+const CopyPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-function isDevelopment () {
-  const { NODE_ENV = 'development' } = process.env
-  return NODE_ENV === 'development'
-}
+// #region Configuration Constants
 
 const SRC_PATH = path.resolve(__dirname, 'src')
 
 const ENTRY_FILE = path.join(__dirname, 'src/index.js')
 const BUILD_DIR = path.join(__dirname, 'build')
-const MAIN_HTML_FILE = path.join(__dirname, 'public/index.html')
+
+const PUBLIC_DIR = path.join(__dirname, 'public')
+const MAIN_HTML_FILE = path.join(PUBLIC_DIR, 'index.html')
+const MANIFEST_JSON_FILE = path.join(PUBLIC_DIR, 'manifest.json')
+
+// #endregion
+
+// #region Webpack Configuration Object
 
 module.exports = {
   mode: (
@@ -73,11 +79,39 @@ module.exports = {
         }
       }
     }),
+    new CopyPlugin({
+      patterns: [
+        {
+          context: PUBLIC_DIR,
+          from: '**/*',
+          to: BUILD_DIR
+        }
+      ]
+    }),
     new HtmlWebpackPlugin({
       template: MAIN_HTML_FILE,
+      templateParameters: {
+        manifest: readJsonFile(MANIFEST_JSON_FILE)
+      },
       filename: 'index.html'
     }),
     new HotModuleReplacementPlugin(),
     new NoEmitOnErrorsPlugin()
   ]
 }
+
+// #endregion
+
+// #region Configuration Utilities
+
+function isDevelopment () {
+  const { NODE_ENV = 'development' } = process.env
+  return NODE_ENV === 'development'
+}
+
+function readJsonFile (filePath) {
+  const fileContents = fs.readFileSync(filePath)
+  return JSON.parse(fileContents)
+}
+
+// #endregion
