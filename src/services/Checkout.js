@@ -1,9 +1,8 @@
 
 class Checkout {
   constructor ({ products }) {
-    const normalizedProducts = this._normalizeProducts(products)
-
-    this._productsById = this._indexProductsById(normalizedProducts)
+    this._indexProductsById(products)
+    this._initializeProductsSelectionQuantity()
   }
 
   scan (productId) {
@@ -14,22 +13,14 @@ class Checkout {
   }
 
   total () {
+    const products = this._productsById.values()
     let total = 0
 
-    for (const { price, selectedQuantity } of this._productsById.values()) {
+    for (const { price, selectedQuantity } of products) {
       total += price * selectedQuantity
     }
 
     return total
-  }
-
-  _normalizeProducts (products) {
-    return products.map(
-      product => ({
-        selectedQuantity: 0,
-        ...product
-      })
-    )
   }
 
   _indexProductsById (products) {
@@ -39,7 +30,13 @@ class Checkout {
       productsMap.set(product.id, product)
     }
 
-    return productsMap
+    this._productsById = productsMap
+  }
+
+  _initializeProductsSelectionQuantity () {
+    for (const product of this._productsById.values()) {
+      product.selectedQuantity = 0
+    }
   }
 
   _productExistOrThrow (productId) {
