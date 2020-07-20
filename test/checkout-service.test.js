@@ -64,9 +64,7 @@ describe('Checkout service', () => {
 
     expect(() => {
       checkout.scan('MUG')
-    }).toThrowError(
-      'The product identified by "MUG" is not in the product list, please provide a valid "productId"'
-    )
+    }).toThrowErrorMatchingSnapshot()
   })
 
   it('returns a total amount of 0 if no products have been scanned', () => {
