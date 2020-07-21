@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Checkout service trows an exception at scanning a unexisting product 1`] = `"'The product identified by \\"MUG\\" is not in the product list, please provide a valid \\"productId\\"'"`;
+exports[`trows an exception at scanning a unexisting product 1`] = `"'The product identified by \\"MUG\\" is not in the product list, please provide a valid \\"productId\\"'"`;
