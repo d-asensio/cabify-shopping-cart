@@ -1,4 +1,4 @@
-import { Checkout } from '../src/services'
+import Checkout from './Checkout'
 
 describe('Checkout service', () => {
   it('do not fail at initialization', () => {

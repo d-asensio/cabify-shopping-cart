@@ -1,4 +1,4 @@
-import { Product } from '../src/models'
+import Product from './Product'
 
 describe('Product model', () => {
   it('do not fail at initialization', () => {
