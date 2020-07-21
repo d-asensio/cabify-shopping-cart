@@ -1,8 +1,8 @@
+import { Product } from '../models'
 
 class Checkout {
   constructor ({ products }) {
-    this._indexProductsById(products)
-    this._initializeProductsSelectionQuantity()
+    this._initializeProducts(products)
   }
 
   scan (productId) {
@@ -23,20 +23,17 @@ class Checkout {
     return total
   }
 
-  _indexProductsById (products) {
+  _initializeProducts (products) {
     const productsMap = new Map()
 
-    for (const product of products) {
-      productsMap.set(product.id, product)
+    for (const productData of products) {
+      productsMap.set(
+        productData.id,
+        new Product(productData)
+      )
     }
 
     this._productsById = productsMap
-  }
-
-  _initializeProductsSelectionQuantity () {
-    for (const product of this._productsById.values()) {
-      product.selectedQuantity = 0
-    }
   }
 
   _productExistOrThrow (productId) {
