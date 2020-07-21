@@ -1,8 +1,19 @@
+import Discount from './Discount'
 import Product from './Product'
 
 class Checkout {
-  constructor ({ products }) {
+  constructor ({ products, discounts = [] }) {
+    this._productsById = new Map()
+    this._discounts = []
+
     this._initializeProducts(products)
+    this._initializeDiscounts(discounts)
+  }
+
+  get _products () {
+    return Array.from(
+      this._productsById.values()
+    )
   }
 
   scan (productId) {
@@ -13,27 +24,43 @@ class Checkout {
   }
 
   total () {
-    const products = this._productsById.values()
-    let total = 0
+    const totalPrice = this._selectedProductsTotalPrice()
+    const totalDiscount = this._selectedProductsTotalDiscount()
 
-    for (const { price, selectedQuantity } of products) {
-      total += price * selectedQuantity
-    }
+    return totalPrice + totalDiscount
+  }
 
-    return total
+  _selectedProductsTotalPrice () {
+    return this._products.reduce(
+      (acc, { price, selectedQuantity }) =>
+        acc + price * selectedQuantity,
+      0
+    )
+  }
+
+  _selectedProductsTotalDiscount () {
+    return this._discounts.reduce(
+      (acc, discount) =>
+        acc + discount.calculateFor(this._products),
+      0
+    )
   }
 
   _initializeProducts (products) {
-    const productsMap = new Map()
-
     for (const productData of products) {
-      productsMap.set(
+      this._productsById.set(
         productData.id,
         new Product(productData)
       )
     }
+  }
 
-    this._productsById = productsMap
+  _initializeDiscounts (discounts) {
+    for (const discountData of discounts) {
+      this._discounts.push(
+        new Discount(discountData)
+      )
+    }
   }
 
   _productExistOrThrow (productId) {

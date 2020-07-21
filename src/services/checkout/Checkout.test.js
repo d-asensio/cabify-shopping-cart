@@ -154,3 +154,62 @@ it('returns the correct total amount if multiple different products have been sc
       .total()
   ).toBe(35)
 })
+
+it('returns the correct total amount if scanned products are entitled to have a discount', () => {
+  const checkout = new Checkout({
+    products: [
+      {
+        id: 'TSHIRT',
+        name: 'Shirt',
+        code: 'X7R2OPX',
+        price: 20.00
+      },
+      {
+        id: 'MUG',
+        name: 'Mug',
+        code: 'X7R2OPY',
+        price: 5.00
+      },
+      {
+        id: 'CAP',
+        name: 'Cap',
+        code: 'X7R2OPZ',
+        price: 10.00
+      }
+    ],
+    discounts: [
+      {
+        type: 'BUY_1_GET_2',
+        name: '2x1 Mug offer',
+        options: {
+          entitledProductId: 'MUG'
+        }
+      },
+      {
+        type: 'BULK_PERCENTAGE',
+        name: 'x3 Shirt offer',
+        options: {
+          entitledProductId: 'TSHIRT',
+          percentage: -5,
+          minimumSelectionQuantity: 2
+        }
+      }
+    ]
+  })
+
+  expect(
+    checkout
+      .scan('CAP')
+      .scan('TSHIRT')
+      .scan('TSHIRT')
+      .scan('MUG')
+      .scan('MUG')
+      .scan('MUG')
+      .scan('CAP')
+      .scan('TSHIRT')
+      .scan('CAP')
+      .scan('MUG')
+      .scan('CAP')
+      .total()
+  ).toBe(107)
+})
