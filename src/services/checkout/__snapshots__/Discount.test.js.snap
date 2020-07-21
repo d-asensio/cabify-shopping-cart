@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`fails when initialized with a unsupported discount type 1`] = `"The \\"UNSUPPORTED_DISCOUNT\\" discount type is not supported, plase, provide a valid discount type"`;
