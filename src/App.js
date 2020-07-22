@@ -2,10 +2,16 @@ import React from 'react'
 import styled from 'styled-components'
 
 import {
-  ShoppingCart
+  ShoppingCart,
+  OrderSummary
 } from './components'
 
 const Wrapper = styled.main`
+  display: grid;
+  grid-template-columns: auto 312px;
+
+  overflow: hidden;
+
   position: fixed;
   top: 50%;
   left: 50%;
@@ -18,9 +24,6 @@ const Wrapper = styled.main`
   max-width: 1088px;
   max-height: 648px;
 
-  display: flex;
-  flex-direction: column;
-
   background-color: #fff;
 
   border-radius: 4px;
@@ -29,6 +32,7 @@ function App () {
   return (
     <Wrapper>
       <ShoppingCart />
+      <OrderSummary />
     </Wrapper>
   )
 }

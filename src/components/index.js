@@ -1,3 +1,4 @@
+export { default as OrderSummary } from './OrderSummary'
 export { default as ProductDetails } from './ProductDetails'
 export { default as ProductList } from './ProductList'
 export { default as SectionHeading } from './SectionHeading'
