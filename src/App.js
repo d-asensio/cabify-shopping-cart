@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { Thumbnail } from './components'
+import { ProductDetails } from './components'
 
 const Wrapper = styled.main`
   display: flex;
@@ -15,17 +15,20 @@ const Wrapper = styled.main`
 function App () {
   return (
     <Wrapper>
-      <Thumbnail
-        src='images/thumbnails/cap.png'
-        alt='Cap'
+      <ProductDetails
+        imageSrc='images/thumbnails/shirt.png'
+        name='Shirt'
+        code='X7R2OPX'
       />
-      <Thumbnail
-        src='images/thumbnails/mug.png'
-        alt='Mug'
+      <ProductDetails
+        imageSrc='images/thumbnails/mug.png'
+        name='Mug'
+        code='X7R2OPZ'
       />
-      <Thumbnail
-        src='images/thumbnails/shirt.png'
-        alt='Shirt'
+      <ProductDetails
+        imageSrc='images/thumbnails/cap.png'
+        name='Cap'
+        code='X7R2OPY'
       />
     </Wrapper>
   )
