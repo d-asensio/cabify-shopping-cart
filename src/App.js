@@ -2,7 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 
 import {
-  ProductList
+  ProductList,
+  SectionHeading
 } from './components'
 
 const Wrapper = styled.main`
@@ -30,6 +31,9 @@ const Wrapper = styled.main`
 function App () {
   return (
     <Wrapper>
+      <SectionHeading>
+        Shopping cart
+      </SectionHeading>
       <ProductList />
     </Wrapper>
   )
