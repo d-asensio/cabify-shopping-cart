@@ -1,7 +1,7 @@
 import normalizeStyle from 'styled-normalize'
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle, css } from 'styled-components'
 
-const GlobalStyle = createGlobalStyle`
+const customStyleReset = css`
   ${normalizeStyle}
 
   * {
@@ -13,6 +13,10 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
+  button {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  }
+
   :root {
     font-family: Avenir, "Avenir Next", "Segoe UI", sans-serif;
     font-size: 16px;
@@ -20,6 +24,10 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+`
+
+const GlobalStyle = createGlobalStyle`
+  ${customStyleReset}
 
   body {
     display: flex;

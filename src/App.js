@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useState, useCallback } from 'react'
 import styled from 'styled-components'
 
-import { ProductDetails } from './components'
+import {
+  ProductDetails,
+  Stepper
+} from './components'
 
 const Wrapper = styled.main`
   display: flex;
@@ -10,9 +13,41 @@ const Wrapper = styled.main`
   background-color: #fff;
 
   border-radius: 4px;
+
+  > * {
+    margin-bottom: 16px;
+  }
 `
 
+const useCounter = (initialValue = 0) => {
+  const [value, setValue] = useState(initialValue)
+
+  const handleDecrease = useCallback(
+    () => setValue(value - 1),
+    [value]
+  )
+
+  const handleIncrease = useCallback(
+    () => setValue(value + 1),
+    [value]
+  )
+
+  return {
+    value,
+    handleChange: setValue,
+    handleDecrease,
+    handleIncrease
+  }
+}
+
 function App () {
+  const {
+    value,
+    handleChange,
+    handleDecrease,
+    handleIncrease
+  } = useCounter(20)
+
   return (
     <Wrapper>
       <ProductDetails
@@ -29,6 +64,12 @@ function App () {
         imageSrc='images/thumbnails/cap.png'
         name='Cap'
         code='X7R2OPY'
+      />
+      <Stepper
+        value={value}
+        onChange={handleChange}
+        onDecrease={handleDecrease}
+        onIncrease={handleIncrease}
       />
     </Wrapper>
   )
