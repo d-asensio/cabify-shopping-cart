@@ -12,6 +12,8 @@ const SectionHeading = styled.h2`
   margin-bottom: 32px;
   
   border-bottom: 1px solid rgba(33, 34, 64, 0.16);
+
+  color: #212240;
 `
 
 export default SectionHeading
