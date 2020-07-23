@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 import TableGrid from './TableGrid'
@@ -15,35 +15,7 @@ const ListTitle = styled.span`
   text-transform: uppercase;
 `
 
-const useCounter = (initialValue = 0) => {
-  const [value, setValue] = useState(initialValue)
-
-  const handleDecrease = useCallback(
-    () => setValue(value - 1),
-    [value]
-  )
-
-  const handleIncrease = useCallback(
-    () => setValue(value + 1),
-    [value]
-  )
-
-  return {
-    value,
-    handleChange: setValue,
-    handleDecrease,
-    handleIncrease
-  }
-}
-
 function ProductList () {
-  const {
-    value: quantity,
-    handleChange,
-    handleDecrease,
-    handleIncrease
-  } = useCounter(0)
-
   return (
     <TableGrid
       columnsTemplate={['45%', '20%', '20%', '15%']}
@@ -56,34 +28,25 @@ function ProductList () {
         <ListTitle>TOTAL</ListTitle>
       </TableGrid.Row>
       <ProductLine
+        id='TSHIRT'
         name='Shirt'
         code='X7R2OPX'
-        quantity={quantity}
         unitPrice={20.00}
         imageSrc='images/thumbnails/shirt.png'
-        onChangeQuantity={handleChange}
-        onDecreaseQuantity={handleDecrease}
-        onIncreaseQuantity={handleIncrease}
       />
       <ProductLine
+        id='MUG'
         name='Mug'
         code='X7R2OPZ'
-        quantity={quantity}
         unitPrice={5.00}
         imageSrc='images/thumbnails/mug.png'
-        onChangeQuantity={handleChange}
-        onDecreaseQuantity={handleDecrease}
-        onIncreaseQuantity={handleIncrease}
       />
       <ProductLine
+        id='CAP'
         name='Cap'
         code='X7R2OPY'
-        quantity={quantity}
         unitPrice={10.00}
         imageSrc='images/thumbnails/cap.png'
-        onChangeQuantity={handleChange}
-        onDecreaseQuantity={handleDecrease}
-        onIncreaseQuantity={handleIncrease}
       />
     </TableGrid>
   )

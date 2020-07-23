@@ -1,6 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import { useDispatch, useSelector } from 'react-redux'
+
+import { actions } from '../reducers'
+import { getProductQuantity } from '../selectors'
+
 import Stepper from './Stepper'
 import ProductDetails from './ProductDetails'
 import TableGrid from './TableGrid'
@@ -14,15 +19,39 @@ const PriceText = styled.span`
 `
 
 function ProductLine ({
+  id,
   name,
   code,
-  quantity,
   unitPrice,
-  imageSrc,
-  onChangeQuantity,
-  onDecreaseQuantity,
-  onIncreaseQuantity
+  imageSrc
 }) {
+  const dispatch = useDispatch()
+
+  const quantity = useSelector(
+    state => getProductQuantity(state, id)
+  )
+
+  const handleQuantityChange = quantity => dispatch(
+    actions.updateProductCounter({
+      id,
+      quantity
+    })
+  )
+
+  const handleDecrease = () => dispatch(
+    actions.updateProductCounter({
+      id,
+      quantity: quantity - 1
+    })
+  )
+
+  const handleIncrease = () => dispatch(
+    actions.updateProductCounter({
+      id,
+      quantity: quantity + 1
+    })
+  )
+
   return (
     <TableGrid.Row>
       <ProductDetails
@@ -32,9 +61,9 @@ function ProductLine ({
       />
       <Stepper
         value={quantity}
-        onChange={onChangeQuantity}
-        onDecrease={onDecreaseQuantity}
-        onIncrease={onIncreaseQuantity}
+        onChange={handleQuantityChange}
+        onDecrease={handleDecrease}
+        onIncrease={handleIncrease}
       />
       <PriceText>{unitPrice} €</PriceText>
       <PriceText>{unitPrice * quantity} €</PriceText>
