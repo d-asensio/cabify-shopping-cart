@@ -18,7 +18,7 @@ const Wrapper = styled.div`
   border-bottom: 1px solid rgba(33, 34, 64, 0.16);
 `
 
-const ItemsCounter = styled.span`
+const TotalProducts = styled.span`
   font-size: 14px;
 
   line-height: 17px;
@@ -48,9 +48,9 @@ function SelectionSummary () {
 
   return (
     <Wrapper>
-      <ItemsCounter>
+      <TotalProducts>
         {totalProductsQuantity} Items
-      </ItemsCounter>
+      </TotalProducts>
       <TotalPrice>
         {totalProductsPrice} €
       </TotalPrice>
