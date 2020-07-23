@@ -1,7 +1,8 @@
 import {
   getProduct,
   getProductList,
-  getProductQuantity
+  getProductQuantity,
+  getTotalProductsQuantity
 } from './index'
 
 describe('getProduct', () => {
@@ -100,6 +101,32 @@ describe('getProductQuantity', () => {
 
     expect(
       getProductQuantity(state, 'TSHIRT')
+    ).toBe(0)
+  })
+})
+
+describe('getAllProductsQuantity', () => {
+  it('gets the sum of all the product counters', () => {
+    const state = {
+      productCountersById: {
+        TSHIRT: 2,
+        CAP: 2,
+        MUG: 1
+      }
+    }
+
+    expect(
+      getTotalProductsQuantity(state)
+    ).toBe(5)
+  })
+
+  it('gets 0 if there are no selected products', () => {
+    const state = {
+      productCountersById: {}
+    }
+
+    expect(
+      getTotalProductsQuantity(state)
     ).toBe(0)
   })
 })

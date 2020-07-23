@@ -28,3 +28,13 @@ export const getProductQuantity = createCachedSelector(
 )(
   (_, productId) => productId
 )
+
+export const getTotalProductsQuantity = createSelector(
+  productCountersById,
+  productCountersById =>
+    Object.values(productCountersById)
+      .reduce(
+        (acc, productQuantity) => acc + productQuantity,
+        0
+      )
+)
