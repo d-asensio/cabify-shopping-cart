@@ -1,2 +1,2 @@
 export * from './discounts'
-export * from './product'
+export * from './products'
