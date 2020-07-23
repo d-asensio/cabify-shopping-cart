@@ -106,7 +106,7 @@ describe('getProductQuantity', () => {
   })
 })
 
-describe('getAllProductsQuantity', () => {
+describe('getTotalProductsQuantity', () => {
   it('gets the sum of all the product counters', () => {
     const state = {
       productCountersById: {
