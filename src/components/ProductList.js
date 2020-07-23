@@ -27,27 +27,9 @@ function ProductList () {
         <ListTitle>PRICE</ListTitle>
         <ListTitle>TOTAL</ListTitle>
       </TableGrid.Row>
-      <ProductLine
-        id='TSHIRT'
-        name='Shirt'
-        code='X7R2OPX'
-        unitPrice={20.00}
-        imageSrc='images/thumbnails/shirt.png'
-      />
-      <ProductLine
-        id='MUG'
-        name='Mug'
-        code='X7R2OPZ'
-        unitPrice={5.00}
-        imageSrc='images/thumbnails/mug.png'
-      />
-      <ProductLine
-        id='CAP'
-        name='Cap'
-        code='X7R2OPY'
-        unitPrice={10.00}
-        imageSrc='images/thumbnails/cap.png'
-      />
+      <ProductLine id='TSHIRT' />
+      <ProductLine id='MUG' />
+      <ProductLine id='CAP' />
     </TableGrid>
   )
 }

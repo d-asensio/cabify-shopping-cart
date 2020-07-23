@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { actions } from '../reducers'
-import { getProductQuantity } from '../selectors'
+import { getProduct, getProductQuantity } from '../selectors'
 
 import Stepper from './Stepper'
 import ProductDetails from './ProductDetails'
@@ -18,14 +18,17 @@ const PriceText = styled.span`
   color: #000;
 `
 
-function ProductLine ({
-  id,
-  name,
-  code,
-  unitPrice,
-  imageSrc
-}) {
+function ProductLine ({ id }) {
   const dispatch = useDispatch()
+
+  const {
+    name,
+    code,
+    price,
+    imageSrc
+  } = useSelector(
+    state => getProduct(state, id)
+  )
 
   const quantity = useSelector(
     state => getProductQuantity(state, id)
@@ -65,8 +68,8 @@ function ProductLine ({
         onDecrease={handleDecrease}
         onIncrease={handleIncrease}
       />
-      <PriceText>{unitPrice} €</PriceText>
-      <PriceText>{unitPrice * quantity} €</PriceText>
+      <PriceText>{price} €</PriceText>
+      <PriceText>{price * quantity} €</PriceText>
     </TableGrid.Row>
   )
 }
