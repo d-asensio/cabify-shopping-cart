@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import SectionHeading from './SectionHeading'
 import DiscountList from './DiscountList'
+import SectionHeading from './SectionHeading'
+import SelectionSummary from './SelectionSummary'
 
 const Wrapper = styled.aside`
   padding: 40px 32px;
@@ -16,6 +17,10 @@ function OrderSummary () {
       <SectionHeading>
         Order Summary
       </SectionHeading>
+      <SelectionSummary
+        selectedItemsCount={11}
+        totalPrice={120}
+      />
       <DiscountList
         discounts={[
           {
