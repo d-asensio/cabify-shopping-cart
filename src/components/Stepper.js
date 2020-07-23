@@ -27,8 +27,12 @@ const CountButton = styled.button`
 const InputNumber = styled.input.attrs({
   type: 'number'
 })`
+  font-size: 14px;
+
   width: 40px;
   height: 40px;
+
+  padding: 1px 2px;
 
   border: 2px solid #dbdbe0;
   outline: none;

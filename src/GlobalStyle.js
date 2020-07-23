@@ -13,6 +13,7 @@ const customStyleReset = css`
     }
   }
 
+  input,
   button {
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   }
