@@ -1,16 +1,16 @@
 import { createSelector } from 'reselect'
 import { createCachedSelector } from 're-reselect'
 
-const productsById = ({ productsById }) => productsById
-const productCountersById = ({ productCountersById }) => productCountersById
+const getProductsById = ({ productsById }) => productsById
+const getProductCountersById = ({ productCountersById }) => productCountersById
 
 export const getProductList = createSelector(
-  productsById,
+  getProductsById,
   productsById => Object.keys(productsById)
 )
 
 export const getProduct = createCachedSelector(
-  productsById,
+  getProductsById,
   (_, productId) => productId,
   (productsById, productId) => {
     return productsById[productId]
@@ -20,7 +20,7 @@ export const getProduct = createCachedSelector(
 )
 
 export const getProductQuantity = createCachedSelector(
-  productCountersById,
+  getProductCountersById,
   (_, productId) => productId,
   (productCountersById, productId) => {
     return productCountersById[productId] || 0
@@ -30,7 +30,7 @@ export const getProductQuantity = createCachedSelector(
 )
 
 export const getTotalProductsQuantity = createSelector(
-  productCountersById,
+  getProductCountersById,
   productCountersById =>
     Object.values(productCountersById)
       .reduce(
@@ -40,8 +40,8 @@ export const getTotalProductsQuantity = createSelector(
 )
 
 export const getTotalProductsPrice = createSelector(
-  productsById,
-  productCountersById,
+  getProductsById,
+  getProductCountersById,
   (productsById, productCountersById) =>
     Object.entries(productCountersById)
       .reduce(
