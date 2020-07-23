@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import Button from './Button'
 import DiscountList from './DiscountList'
 import SectionHeading from './SectionHeading'
 import SelectionSummary from './SelectionSummary'
@@ -37,6 +38,7 @@ function OrderSummary () {
           }
         ]}
       />
+      <Button>Checkout</Button>
     </Wrapper>
   )
 }
