@@ -25,9 +25,7 @@ function OrderSummary () {
       <SectionHeading>
         Order Summary
       </SectionHeading>
-      <SelectionSummary
-        totalPrice={120}
-      />
+      <SelectionSummary />
       <DiscountList
         discounts={[
           {
