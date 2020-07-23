@@ -19,9 +19,5 @@ export default {
       price: 10.00
     }
   },
-  productCountersById: {
-    TSHIRT: 0,
-    MUG: 0,
-    CAP: 0
-  }
+  productCountersById: {}
 }

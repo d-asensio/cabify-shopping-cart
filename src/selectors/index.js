@@ -1,1 +1,1 @@
-export const selectors = {}
+export * from './product'
