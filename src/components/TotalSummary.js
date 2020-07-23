@@ -1,6 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import { useSelector } from 'react-redux'
+
+import { getGrandTotal } from '../selectors'
+
 import Button from './Button'
 
 const PriceDetails = styled.div`
@@ -32,7 +36,11 @@ const GrandTotal = styled.span`
   text-transform: uppercase;
 `
 
-function TotalSummary ({ grandTotal, onSelectionConfirmation }) {
+function TotalSummary ({ onSelectionConfirmation }) {
+  const grandTotal = useSelector(
+    getGrandTotal
+  )
+
   return (
     <div>
       <PriceDetails>

@@ -27,9 +27,7 @@ function OrderSummary () {
       </SectionHeading>
       <SelectionSummary />
       <DiscountList />
-      <TotalSummary
-        grandTotal={107}
-      />
+      <TotalSummary />
     </Wrapper>
   )
 }
