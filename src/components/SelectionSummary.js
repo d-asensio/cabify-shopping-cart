@@ -1,6 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import { useSelector } from 'react-redux'
+
+import { getTotalProductsQuantity } from '../selectors'
+
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
@@ -30,11 +34,15 @@ const TotalPrice = styled.span`
   color: #212240;
 `
 
-function SelectionSummary ({ selectedItemsCount, totalPrice }) {
+function SelectionSummary ({ totalPrice }) {
+  const totalProductsQuantity = useSelector(
+    getTotalProductsQuantity
+  )
+
   return (
     <Wrapper>
       <ItemsCounter>
-        {selectedItemsCount} Items
+        {totalProductsQuantity} Items
       </ItemsCounter>
       <TotalPrice>
         {totalPrice} €
