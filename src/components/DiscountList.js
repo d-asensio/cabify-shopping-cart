@@ -18,6 +18,7 @@ const Heading = styled.h3`
 
   color: #717285;
 
+  margin: 0;
   margin-bottom: 16px;
 `
 
