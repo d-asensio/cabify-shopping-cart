@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import TableGrid from './TableGrid'
 import ProductLine from './ProductLine'
 
-const ListTitle = styled.span`
+const ColumnTitle = styled.span`
   font-size: 10px;
 
   letter-spacing: 1px;
@@ -22,10 +22,10 @@ function ProductList () {
       columnAlignments={['left']}
     >
       <TableGrid.Row>
-        <ListTitle>PRODUCT DETAILS</ListTitle>
-        <ListTitle>QUANTITY</ListTitle>
-        <ListTitle>PRICE</ListTitle>
-        <ListTitle>TOTAL</ListTitle>
+        <ColumnTitle>PRODUCT DETAILS</ColumnTitle>
+        <ColumnTitle>QUANTITY</ColumnTitle>
+        <ColumnTitle>PRICE</ColumnTitle>
+        <ColumnTitle>TOTAL</ColumnTitle>
       </TableGrid.Row>
       <ProductLine id='TSHIRT' />
       <ProductLine id='MUG' />
