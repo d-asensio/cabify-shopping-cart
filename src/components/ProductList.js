@@ -1,6 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import { useSelector } from 'react-redux'
+
+import { getProductList } from '../selectors'
+
 import TableGrid from './TableGrid'
 import ProductLine from './ProductLine'
 
@@ -16,6 +20,10 @@ const ColumnTitle = styled.span`
 `
 
 function ProductList () {
+  const productList = useSelector(
+    getProductList
+  )
+
   return (
     <TableGrid
       columnsTemplate={['45%', '20%', '20%', '15%']}
@@ -27,9 +35,10 @@ function ProductList () {
         <ColumnTitle>PRICE</ColumnTitle>
         <ColumnTitle>TOTAL</ColumnTitle>
       </TableGrid.Row>
-      <ProductLine id='TSHIRT' />
-      <ProductLine id='MUG' />
-      <ProductLine id='CAP' />
+      {productList.map(
+        (productId, key) =>
+          <ProductLine key={key} id={productId} />
+      )}
     </TableGrid>
   )
 }
