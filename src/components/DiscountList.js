@@ -1,6 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 
+const Wrapper = styled.div`
+  margin-bottom: 16px;
+  
+  border-bottom: 1px solid rgba(33, 34, 64, 0.16);
+`
+
 const Heading = styled.h3`
   font-size: 12px;
   line-height: 16px;
@@ -48,9 +54,11 @@ const DiscountAmount = styled.span`
   color: #212240;
 `
 
-function DiscountList ({ discounts }) {
+function DiscountList ({ className, discounts }) {
   return (
-    <div>
+    <Wrapper
+      className={className}
+    >
       <Heading>Discounts</Heading>
       <List>
         {discounts.map(({ name, amount }, key) => (
@@ -60,7 +68,7 @@ function DiscountList ({ discounts }) {
           </ListItem>
         ))}
       </List>
-    </div>
+    </Wrapper>
   )
 }
 
@@ -68,4 +76,4 @@ DiscountList.defaultProps = {
   discounts: []
 }
 
-export default DiscountList
+export default styled(DiscountList)``
