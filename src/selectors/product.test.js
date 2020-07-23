@@ -1,4 +1,8 @@
-import { getProduct, getProductQuantity } from './index'
+import {
+  getProduct,
+  getProductList,
+  getProductQuantity
+} from './index'
 
 describe('getProduct', () => {
   it('gets a specific product', () => {
@@ -33,6 +37,46 @@ describe('getProduct', () => {
     expect(
       getProduct(state, 'TSHIRT')
     ).toBe(undefined)
+  })
+})
+
+describe('getProductList', () => {
+  it('gets a list of the product ids', () => {
+    const state = {
+      productsById: {
+        TSHIRT: {
+          id: 'TSHIRT',
+          name: 'Shirt',
+          code: 'X7R2OPX',
+          price: 20.00,
+          imageSrc: 'images/thumbnails/shirt.png'
+        },
+        MUG: {
+          id: 'MUG',
+          name: 'Mug',
+          code: 'X7R2OPY',
+          price: 5.00,
+          imageSrc: 'images/thumbnails/mug.png'
+        }
+      }
+    }
+
+    expect(
+      getProductList(state)
+    ).toMatchObject([
+      'TSHIRT',
+      'MUG'
+    ])
+  })
+
+  it('gets an empty list if there are no available products', () => {
+    const state = {
+      productsById: {}
+    }
+
+    expect(
+      getProductList(state)
+    ).toMatchObject([])
   })
 })
 

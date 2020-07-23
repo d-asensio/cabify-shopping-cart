@@ -1,7 +1,13 @@
+import { createSelector } from 'reselect'
 import { createCachedSelector } from 're-reselect'
 
 const productsById = ({ productsById }) => productsById
 const productCountersById = ({ productCountersById }) => productCountersById
+
+export const getProductList = createSelector(
+  productsById,
+  productsById => Object.keys(productsById)
+)
 
 export const getProduct = createCachedSelector(
   productsById,
