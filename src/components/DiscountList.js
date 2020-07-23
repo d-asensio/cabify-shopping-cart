@@ -1,6 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import { useSelector } from 'react-redux'
+
+import { getDiscounts } from '../selectors'
+
 const Wrapper = styled.div`
   margin-bottom: 16px;
   
@@ -55,7 +59,11 @@ const DiscountAmount = styled.span`
   color: #212240;
 `
 
-function DiscountList ({ className, discounts }) {
+function DiscountList ({ className }) {
+  const discounts = useSelector(
+    getDiscounts
+  )
+
   return (
     <Wrapper
       className={className}
@@ -71,10 +79,6 @@ function DiscountList ({ className, discounts }) {
       </List>
     </Wrapper>
   )
-}
-
-DiscountList.defaultProps = {
-  discounts: []
 }
 
 export default styled(DiscountList)``

@@ -26,22 +26,7 @@ function OrderSummary () {
         Order Summary
       </SectionHeading>
       <SelectionSummary />
-      <DiscountList
-        discounts={[
-          {
-            name: '2x1 Mug offer',
-            amount: -10.00
-          },
-          {
-            name: 'x3 Shirt offer',
-            amount: -3.00
-          },
-          {
-            name: 'Promo code',
-            amount: 0
-          }
-        ]}
-      />
+      <DiscountList />
       <TotalSummary
         grandTotal={107}
       />
