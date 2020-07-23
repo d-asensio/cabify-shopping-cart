@@ -39,5 +39,6 @@ export default {
   ],
   // The following properties are calculated by a external service which knows about business rules, that is the reason
   // why those can not be deduced directly from the state via a selector.
+  totalProductsPrice: 0,
   grandTotal: 0
 }
