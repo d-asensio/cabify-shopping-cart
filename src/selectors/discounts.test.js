@@ -1,6 +1,5 @@
 import {
-  getDiscounts,
-  getTotalDiscountsAmount
+  getDiscounts
 } from './index'
 
 describe('getDiscounts', () => {
@@ -19,36 +18,5 @@ describe('getDiscounts', () => {
     ).toBe(
       state.discounts
     )
-  })
-})
-
-describe('getTotalDiscountsAmount', () => {
-  it('returns the sum of all the discounts', () => {
-    const state = {
-      discounts: [
-        {
-          name: '2x1 Mug offer',
-          amount: -10.00
-        },
-        {
-          name: 'x3 Shirt offer',
-          amount: -3.00
-        }
-      ]
-    }
-
-    expect(
-      getTotalDiscountsAmount(state)
-    ).toBe(-13.00)
-  })
-
-  it('returns 0 if there are no discounts', () => {
-    const state = {
-      discounts: []
-    }
-
-    expect(
-      getTotalDiscountsAmount(state)
-    ).toBe(0)
   })
 })
