@@ -23,21 +23,10 @@ export default {
     }
   },
   productCountersById: {},
-  discounts: [
-    {
-      name: '2x1 Mug offer',
-      amount: -10.00
-    },
-    {
-      name: 'x3 Shirt offer',
-      amount: -3.00
-    },
-    {
-      name: 'Promo code',
-      amount: 0
-    }
-  ],
-  // The following properties are calculated by a external service which knows about business rules, that is the reason
-  // why those can not be deduced directly from the state via a selector.
+  /**
+   * The following properties are calculated by a external service which knows about business rules, that is the reason
+   * why those can not be deduced directly from the state via a selector.
+  */
+  discounts: [],
   grandTotal: 0
 }
