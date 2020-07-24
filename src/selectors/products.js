@@ -52,3 +52,12 @@ export const getTotalProductsPrice = createSelector(
         0
       )
 )
+
+export const getSelectedProducts = createSelector(
+  getProductCountersById,
+  productCountersById =>
+    Object.entries(productCountersById)
+      .map(
+        ([id, quantity]) => ({ id, quantity })
+      )
+)

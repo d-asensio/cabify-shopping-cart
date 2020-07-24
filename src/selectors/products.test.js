@@ -3,7 +3,8 @@ import {
   getProductList,
   getProductQuantity,
   getTotalProductsQuantity,
-  getTotalProductsPrice
+  getTotalProductsPrice,
+  getSelectedProducts
 } from './index'
 
 describe('getProduct', () => {
@@ -177,5 +178,61 @@ describe('getTotalProductsPrice', () => {
     expect(
       getTotalProductsPrice(state)
     ).toBe(0)
+  })
+})
+
+describe('getSelectedProducts', () => {
+  it('gets a list of all the selected products', () => {
+    const state = {
+      productsById: {
+        TSHIRT: {
+          price: 20.00
+        },
+        CAP: {
+          price: 5.00
+        },
+        MUG: {
+          price: 10.00
+        }
+      },
+      productCountersById: {
+        TSHIRT: 2,
+        MUG: 1
+      }
+    }
+
+    expect(
+      getSelectedProducts(state)
+    ).toMatchObject([
+      {
+        id: 'TSHIRT',
+        quantity: 2
+      },
+      {
+        id: 'MUG',
+        quantity: 1
+      }
+    ])
+  })
+
+  it('gets an empty list if there are no selected products', () => {
+    const state = {
+      productsById: {
+        TSHIRT: {
+          price: 20.00
+        },
+        CAP: {
+          price: 5.00
+        },
+        MUG: {
+          price: 10.00
+        }
+      },
+      productCountersById: {}
+    }
+
+    expect(
+      getSelectedProducts(state)
+    ).toMatchObject([])
   })
 })
