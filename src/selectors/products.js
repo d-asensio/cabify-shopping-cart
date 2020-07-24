@@ -39,4 +39,16 @@ export const getTotalProductsQuantity = createSelector(
       )
 )
 
-export const getTotalProductsPrice = ({ totalProductsPrice }) => totalProductsPrice
+export const getTotalProductsPrice = createSelector(
+  getProductsById,
+  getProductCountersById,
+  (productsById, productCountersById) =>
+    Object.entries(productCountersById)
+      .reduce(
+        (acc, [productId, productQuantity]) => {
+          const product = productsById[productId]
+          return acc + (productQuantity * product.price)
+        },
+        0
+      )
+)

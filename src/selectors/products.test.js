@@ -133,13 +133,49 @@ describe('getTotalProductsQuantity', () => {
 })
 
 describe('getTotalProductsPrice', () => {
-  it('gets the total products price from the store', () => {
+  it('gets the total price of all the products', () => {
     const state = {
-      totalProductsPrice: 60
+      productsById: {
+        TSHIRT: {
+          price: 20.00
+        },
+        CAP: {
+          price: 5.00
+        },
+        MUG: {
+          price: 10.00
+        }
+      },
+      productCountersById: {
+        TSHIRT: 2,
+        CAP: 2,
+        MUG: 1
+      }
     }
 
     expect(
       getTotalProductsPrice(state)
     ).toBe(60)
+  })
+
+  it('gets 0 if there are no selected products', () => {
+    const state = {
+      productsById: {
+        TSHIRT: {
+          price: 20.00
+        },
+        CAP: {
+          price: 5.00
+        },
+        MUG: {
+          price: 10.00
+        }
+      },
+      productCountersById: {}
+    }
+
+    expect(
+      getTotalProductsPrice(state)
+    ).toBe(0)
   })
 })
