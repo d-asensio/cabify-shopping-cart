@@ -277,3 +277,135 @@ it('returns the correct total amount if scanned products are entitled to have a 
       .total()
   ).toBe(107)
 })
+
+it('returns the correct discounts breakdown if scanned products are entitled to have a single discount', () => {
+  const checkout = new Checkout({
+    products: [
+      {
+        id: 'TSHIRT',
+        name: 'Shirt',
+        code: 'X7R2OPX',
+        price: 20.00
+      }
+    ],
+    discounts: [
+      {
+        type: 'BULK_PERCENTAGE',
+        name: 'x3 Shirt offer',
+        options: {
+          entitledProductId: 'TSHIRT',
+          percentage: -5,
+          minimumSelectionQuantity: 3
+        }
+      }
+    ]
+  })
+
+  expect(
+    checkout
+      .scan('TSHIRT', 3)
+      .discountsBreakdown()
+  ).toMatchObject([
+    {
+      name: 'x3 Shirt offer',
+      amount: -3.00
+    }
+  ])
+})
+
+it('returns the correct discounts breakdown if scanned products are entitled to have a multiple discounts', () => {
+  const checkout = new Checkout({
+    products: [
+      {
+        id: 'TSHIRT',
+        name: 'Shirt',
+        code: 'X7R2OPX',
+        price: 20.00
+      },
+      {
+        id: 'MUG',
+        name: 'Mug',
+        code: 'X7R2OPY',
+        price: 5.00
+      }
+    ],
+    discounts: [
+      {
+        type: 'BUY_1_GET_2',
+        name: '2x1 Mug offer',
+        options: {
+          entitledProductId: 'MUG'
+        }
+      },
+      {
+        type: 'BULK_PERCENTAGE',
+        name: 'x3 Shirt offer',
+        options: {
+          entitledProductId: 'TSHIRT',
+          percentage: -5,
+          minimumSelectionQuantity: 3
+        }
+      }
+    ]
+  })
+
+  expect(
+    checkout
+      .scan('TSHIRT', 3)
+      .scan('MUG', 4)
+      .discountsBreakdown()
+  ).toMatchObject([
+    {
+      name: '2x1 Mug offer',
+      amount: -10.00
+    },
+    {
+      name: 'x3 Shirt offer',
+      amount: -3.00
+    }
+  ])
+})
+
+it('do not return the discounts breakdown if scanned products are not entitled to have a multiple discounts', () => {
+  const checkout = new Checkout({
+    products: [
+      {
+        id: 'TSHIRT',
+        name: 'Shirt',
+        code: 'X7R2OPX',
+        price: 20.00
+      },
+      {
+        id: 'MUG',
+        name: 'Mug',
+        code: 'X7R2OPY',
+        price: 5.00
+      }
+    ],
+    discounts: [
+      {
+        type: 'BUY_1_GET_2',
+        name: '2x1 Mug offer',
+        options: {
+          entitledProductId: 'MUG'
+        }
+      },
+      {
+        type: 'BULK_PERCENTAGE',
+        name: 'x3 Shirt offer',
+        options: {
+          entitledProductId: 'TSHIRT',
+          percentage: -5,
+          minimumSelectionQuantity: 3
+        }
+      }
+    ]
+  })
+
+  expect(
+    checkout
+      .scan('TSHIRT', 2)
+      .scan('MUG', 1)
+      .discountsBreakdown()
+  ).toMatchObject([])
+})

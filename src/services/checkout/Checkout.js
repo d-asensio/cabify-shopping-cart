@@ -30,12 +30,31 @@ class Checkout {
     return totalPrice + totalDiscount
   }
 
+  discountsBreakdown () {
+    return this._selectedProductsAppliedDiscounts()
+  }
+
   _selectedProductsTotalPrice () {
     return this._products.reduce(
       (acc, { price, selectedQuantity }) =>
         acc + price * selectedQuantity,
       0
     )
+  }
+
+  _selectedProductsAppliedDiscounts () {
+    return this._discounts
+      .map(
+        discount => {
+          const name = discount.name
+          const amount = discount.calculateFor(this._products)
+
+          if (!amount) return false
+
+          return { name, amount }
+        }
+      )
+      .filter(Boolean)
   }
 
   _selectedProductsTotalDiscount () {
