@@ -255,7 +255,7 @@ it('returns the correct total amount if scanned products are entitled to have a 
         options: {
           entitledProductId: 'TSHIRT',
           percentage: -5,
-          minimumSelectionQuantity: 2
+          minimumSelectionQuantity: 3
         }
       }
     ]
