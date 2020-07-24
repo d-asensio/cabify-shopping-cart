@@ -16,9 +16,9 @@ class Checkout {
     )
   }
 
-  scan (productId) {
+  scan (productId, selectedQuantity = 1) {
     this._productExistOrThrow(productId)
-    this._selectProductById(productId)
+    this._selectProductById(productId, selectedQuantity)
 
     return this
   }
@@ -71,10 +71,10 @@ class Checkout {
     }
   }
 
-  _selectProductById (productId) {
+  _selectProductById (productId, selectedQuantity) {
     const product = this._productsById.get(productId)
 
-    product.selectedQuantity += 1
+    product.selectedQuantity += selectedQuantity
   }
 }
 

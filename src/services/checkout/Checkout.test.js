@@ -102,6 +102,70 @@ it('returns the correct total amount if one product have been scanned', () => {
   ).toBe(20)
 })
 
+it('returns the correct total amount if one product have been scanned specifying a quantity', () => {
+  const checkout = new Checkout({
+    products: [
+      {
+        id: 'TSHIRT',
+        name: 'Shirt',
+        code: 'X7R2OPX',
+        price: 20.00
+      }
+    ]
+  })
+
+  expect(
+    checkout
+      .scan('TSHIRT', 3)
+      .total()
+  ).toBe(60)
+})
+
+it('returns 0 as the total if one product have been scanned specifying a quantity of 0', () => {
+  const checkout = new Checkout({
+    products: [
+      {
+        id: 'TSHIRT',
+        name: 'Shirt',
+        code: 'X7R2OPX',
+        price: 20.00
+      }
+    ]
+  })
+
+  expect(
+    checkout
+      .scan('TSHIRT', 0)
+      .total()
+  ).toBe(0)
+})
+
+it('returns the correct total amount if multiple products have been scanned specifying a quantity', () => {
+  const checkout = new Checkout({
+    products: [
+      {
+        id: 'TSHIRT',
+        name: 'Shirt',
+        code: 'X7R2OPX',
+        price: 20.00
+      },
+      {
+        id: 'CAP',
+        name: 'Cap',
+        code: 'X7R2OPY',
+        price: 5.00
+      }
+    ]
+  })
+
+  expect(
+    checkout
+      .scan('TSHIRT', 3)
+      .scan('CAP', 2)
+      .total()
+  ).toBe(70)
+})
+
 it('returns the correct total amount if one product have been scanned multiple times', () => {
   const checkout = new Checkout({
     products: [
