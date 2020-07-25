@@ -1,4 +1,5 @@
 import {
+  getIsLoadingProducts,
   getProduct,
   getProductList,
   getProductQuantity,
@@ -6,6 +7,28 @@ import {
   getTotalProductsPrice,
   getSelectedProducts
 } from './index'
+
+describe('getIsLoadingProducts', () => {
+  it('gets the loading state of the products when products are not loaded', () => {
+    const state = {
+      isLoadingProducts: true
+    }
+
+    expect(
+      getIsLoadingProducts(state)
+    ).toBe(true)
+  })
+
+  it('gets the loading state of the products when products are loaded', () => {
+    const state = {
+      isLoadingProducts: false
+    }
+
+    expect(
+      getIsLoadingProducts(state)
+    ).toBe(false)
+  })
+})
 
 describe('getProduct', () => {
   it('gets a specific product', () => {

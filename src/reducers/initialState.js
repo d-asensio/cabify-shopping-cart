@@ -1,4 +1,5 @@
 export default {
+  isLoadingProducts: true,
   productsById: {
     TSHIRT: {
       id: 'TSHIRT',
