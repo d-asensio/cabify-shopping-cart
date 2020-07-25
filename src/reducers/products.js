@@ -1,5 +1,18 @@
+import keyBy from 'lodash.keyby'
+
 export function fetchProducts (state) {
   state.isLoadingProducts = true
+}
+
+export function receiveProducts (state, { payload }) {
+  const { products } = payload
+
+  state.productsById = keyBy(
+    products,
+    ({ id }) => id
+  )
+
+  state.isLoadingProducts = false
 }
 
 export function updateProductCounter (state, { payload }) {

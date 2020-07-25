@@ -17,6 +17,60 @@ describe('fetchProducts', () => {
   })
 })
 
+describe('receiveProducts', () => {
+  it('indexes received products by id', () => {
+    const state = {
+      productsById: {}
+    }
+
+    const newState = reducer(
+      state,
+      actions.receiveProducts({
+        products: [
+          {
+            id: 'TSHIRT',
+            name: 'Shirt'
+          },
+          {
+            id: 'MUG',
+            name: 'Mug'
+          }
+        ]
+      })
+    )
+
+    expect(
+      newState.productsById
+    ).toMatchObject({
+      TSHIRT: {
+        id: 'TSHIRT',
+        name: 'Shirt'
+      },
+      MUG: {
+        id: 'MUG',
+        name: 'Mug'
+      }
+    })
+  })
+
+  it('sets the loading state to `false`', () => {
+    const state = {
+      isLoadingProducts: true
+    }
+
+    const newState = reducer(
+      state,
+      actions.receiveProducts({
+        products: []
+      })
+    )
+
+    expect(
+      newState.isLoadingProducts
+    ).toBe(false)
+  })
+})
+
 describe('updateProductCounter', () => {
   it('updates the product counter if the provided amount is positive', () => {
     const state = {
