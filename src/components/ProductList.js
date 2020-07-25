@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
-import { getProductList } from '../selectors'
+import { getIsLoadingProducts, getProductList } from '../selectors'
+import { actions } from '../reducers'
 
 import TableGrid from './TableGrid'
 import ProductLine from './ProductLine'
@@ -20,9 +21,23 @@ const ColumnTitle = styled.span`
 `
 
 function ProductList () {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(
+      actions.fetchProducts()
+    )
+  }, [])
+
+  const isLoading = useSelector(
+    getIsLoadingProducts
+  )
+
   const productList = useSelector(
     getProductList
   )
+
+  if (isLoading) return null
 
   return (
     <TableGrid
