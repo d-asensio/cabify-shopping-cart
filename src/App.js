@@ -8,7 +8,7 @@ import {
 
 const Wrapper = styled.main`
   display: grid;
-  grid-template-columns: auto 312px;
+  grid-template-columns: auto minmax(auto, 312px);
 
   overflow: hidden;
 
