@@ -11,7 +11,15 @@ import createSagaMiddleware from 'redux-saga'
 import { reducer } from './reducers'
 import { saga } from './sagas'
 
-const sagaMiddleware = createSagaMiddleware()
+import { initCheckoutService } from './services'
+
+const checkoutService = initCheckoutService()
+
+const sagaMiddleware = createSagaMiddleware({
+  context: {
+    checkoutService
+  }
+})
 
 const store = configureStore({
   reducer,

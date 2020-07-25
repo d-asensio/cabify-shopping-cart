@@ -1,0 +1,18 @@
+[
+  {
+    "type": "BUY_1_GET_2",
+    "name": "2x1 Mug offer",
+    "options": {
+      "entitledProductId": "MUG"
+    }
+  },
+  {
+    "type": "BULK_PERCENTAGE",
+    "name": "x3 Shirt offer",
+    "options": {
+      "entitledProductId": "TSHIRT",
+      "percentage": -5,
+      "minimumSelectionQuantity": 3
+    }
+  }
+]

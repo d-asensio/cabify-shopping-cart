@@ -57,6 +57,7 @@
     "husky": "^4.2.5",
     "jest": "^25.4.0",
     "lint-staged": ">=10",
+    "redux-saga-test-plan": "^4.0.0-rc.3",
     "rimraf": "^3.0.2",
     "standard": "14.x.x",
     "webpack": "^4.43.0",

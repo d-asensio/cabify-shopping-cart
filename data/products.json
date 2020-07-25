@@ -1,0 +1,23 @@
+[
+  {
+    "id": "TSHIRT",
+    "name": "Shirt",
+    "code": "X7R2OPX",
+    "price": 20.00,
+    "imageSrc": "images/thumbnails/shirt.png"
+  },
+  {
+    "id": "MUG",
+    "name": "Mug",
+    "code": "X2G2OPZ",
+    "price": 5.00,
+    "imageSrc": "images/thumbnails/mug.png"
+  },
+  {
+    "id": "CAP",
+    "name": "Cap",
+    "code": "X3W2OPY",
+    "price": 10.00,
+    "imageSrc": "images/thumbnails/cap.png"
+  }
+]

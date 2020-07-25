@@ -17,6 +17,8 @@ const SRC_PATH = path.resolve(__dirname, 'src')
 const ENTRY_FILE = path.join(__dirname, 'src/index.js')
 const BUILD_DIR = path.join(__dirname, 'build')
 
+const DATA_DIR = path.resolve(__dirname, 'data')
+
 const PUBLIC_DIR = path.join(__dirname, 'public')
 const MAIN_HTML_FILE = path.join(PUBLIC_DIR, 'index.html')
 const MANIFEST_JSON_FILE = path.join(PUBLIC_DIR, 'manifest.json')
@@ -85,6 +87,11 @@ module.exports = {
           context: PUBLIC_DIR,
           from: '**/*',
           to: BUILD_DIR
+        },
+        {
+          context: DATA_DIR,
+          from: '**/*',
+          to: path.join(BUILD_DIR, 'data')
         }
       ]
     }),
