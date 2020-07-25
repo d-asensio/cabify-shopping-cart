@@ -1,5 +1,22 @@
 import { reducer, actions } from './index'
 
+describe('fetchProducts', () => {
+  it('sets the loading state to `true`', () => {
+    const state = {
+      isLoadingProducts: false
+    }
+
+    const newState = reducer(
+      state,
+      actions.fetchProducts()
+    )
+
+    expect(
+      newState.isLoadingProducts
+    ).toBe(true)
+  })
+})
+
 describe('updateProductCounter', () => {
   it('updates the product counter if the provided amount is positive', () => {
     const state = {
