@@ -1,9 +1,16 @@
+import memoize from 'lodash.memoize'
+
 import { Checkout } from '../models'
 
 const initCheckoutService = function ({ fetch = window.fetch } = {}) {
   const SERVICE_URL = '/data'
 
   let checkout = null
+
+  const _getServiceData = memoize(async (dataPath) => {
+    const response = await fetch(`${SERVICE_URL}/${dataPath}.json`)
+    return response.json()
+  })
 
   async function getAvailableProducts () {
     return _getServiceData('products')
@@ -18,11 +25,6 @@ const initCheckoutService = function ({ fetch = window.fetch } = {}) {
       discounts: checkout.discountsBreakdown(),
       total: checkout.total()
     }
-  }
-
-  async function _getServiceData (dataPath) {
-    const response = await fetch(`${SERVICE_URL}/${dataPath}.json`)
-    return response.json()
   }
 
   async function _initNewCheckout () {

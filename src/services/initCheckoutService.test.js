@@ -35,6 +35,21 @@ describe('getAvailableProducts', () => {
     )
   })
 
+  it('memoized API calls', async () => {
+    const fetch = createFetchMock(() => [])
+
+    const checkoutService = initCheckoutService({ fetch })
+
+    await checkoutService.getAvailableProducts()
+    await checkoutService.getAvailableProducts()
+
+    expect(
+      fetch.mock.calls.length
+    ).toBe(
+      1
+    )
+  })
+
   it('gets products that are returned from the API', async () => {
     const fetch = createFetchMock(() => [
       {
@@ -80,6 +95,21 @@ describe('getSummaryForSelection', () => {
       fetch.mock.calls[1][0]
     ).toBe(
       '/data/discounts.json'
+    )
+  })
+
+  it('memoized API calls', async () => {
+    const fetch = createFetchMock(() => [])
+
+    const checkoutService = initCheckoutService({ fetch })
+
+    await checkoutService.getSummaryForSelection([])
+    await checkoutService.getSummaryForSelection([])
+
+    expect(
+      fetch.mock.calls.length
+    ).toBe(
+      2
     )
   })
 
