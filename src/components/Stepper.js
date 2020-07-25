@@ -92,9 +92,7 @@ function Stepper ({ value, onChange, onDecrease, onIncrease }) {
 }
 
 Stepper.defaultProps = {
-  onChange: () => {},
-  onDecrease: () => {},
-  onIncrease: () => {}
+  onChange: () => {}
 }
 
 export default Stepper
