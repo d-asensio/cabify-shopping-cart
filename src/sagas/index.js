@@ -1,11 +1,11 @@
 import { all } from 'redux-saga/effects'
 
 import fetchData from './fetchData'
-import summaryWatcher from './summaryWatcher'
+import userSelectionWatcher from './userSelectionWatcher'
 
 export function * saga () {
   yield all([
     fetchData(),
-    summaryWatcher()
+    userSelectionWatcher()
   ])
 }

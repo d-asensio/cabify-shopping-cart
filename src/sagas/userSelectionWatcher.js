@@ -33,7 +33,7 @@ function * updateSummaryPrices () {
   )
 }
 
-export default function * summaryWatcher () {
+export default function * userSelectionWatcher () {
   yield takeEvery(
     actions.updateProductCounter,
     updateSummaryPrices
