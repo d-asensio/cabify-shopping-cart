@@ -1,6 +1,6 @@
 import memoize from 'lodash.memoize'
 
-import { Checkout } from '../models'
+import { Checkout } from '../../checkout'
 
 const initCheckoutService = function ({ fetch = window.fetch } = {}) {
   const SERVICE_URL = '/data'
