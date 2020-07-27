@@ -26,3 +26,13 @@ So the priority should go in this direction when it comes to defining the bounda
 ## Technical context
 
 The technical context is more open in this case, the start point is a blank canvas so there is not any legacy code, and the only person involved in the "development team" is me, so the choice of technologies, techniques, etc. will be very opinionated and not open to debate, which would be the healthier thing to do when working in real life.
+
+## Technologies of choice
+
+I made my choices taking into account the product needs, striving for fast development to produce maintainable, reliable, and clean code.
+
+- **React:** I will be using React to develop this because it is the library for building UI interfaces that I know the most and it has a great ecosystem, however it comes with some drawbacks (like any other thing out there) and I am aware of those (performance, bundle size, etc.) but I think that for this project those are more than reasonable.
+
+- **Styled-components:** CSS-in-JS is controversial I know, but it is good for fast-paced development, simplifies a lot the building toolset, and helps in writing semantic and understandable code. I think it is ideal for this project since it is small and the drawback of the bundle size will not be noticeable. In a different project with different needs, I would probably use SASS with a BEMIT architecture, I am pretty comfy working this way as well.
+
+- **Redux with redux-toolkit:** redux-toolkit provides useful defaults like `createReducer` that uses [immer](https://github.com/immerjs/immer) to mutate the state, which leads to cleaner code.
