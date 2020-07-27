@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { useControlledInputNumber } from '../hooks'
+import useControlledInputNumber from 'use-controlled-input-number'
 
 const Wrapper = styled.div`
   display: flex;
