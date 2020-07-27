@@ -1,4 +1,4 @@
-import initCheckoutService from './initCheckoutService'
+import { initCheckoutService } from '..'
 
 const createFetchMock = getResponse => jest.fn(
   async (...params) => ({

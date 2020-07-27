@@ -1,4 +1,4 @@
-import createDeepEqualSelector from './createDeepEqualSelector'
+import { createDeepEqualSelector } from '..'
 
 it('executes the result function once when calling the selector two times with deep equal (but different) objects', () => {
   const resultFunc = jest.fn()

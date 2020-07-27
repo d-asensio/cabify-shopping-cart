@@ -1,4 +1,4 @@
-import Checkout from './Checkout'
+import Checkout from '../Checkout'
 
 it('do not fail at initialization', () => {
   const checkout = new Checkout({

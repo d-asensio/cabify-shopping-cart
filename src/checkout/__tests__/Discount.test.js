@@ -1,4 +1,4 @@
-import Discount from './Discount'
+import Discount from '../Discount'
 
 it('do not fail at initialization', () => {
   const discount = new Discount({

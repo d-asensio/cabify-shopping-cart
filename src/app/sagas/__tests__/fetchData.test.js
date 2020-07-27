@@ -1,9 +1,9 @@
 import { expectSaga } from 'redux-saga-test-plan'
 import { getContext } from 'redux-saga-test-plan/matchers'
 
-import { actions } from '../reducers'
+import { actions } from '../../reducers'
 
-import fetchData from './fetchData'
+import fetchData from '../fetchData'
 
 describe('fetchProducts', () => {
   it('responds to fetchProducts actions triggering the right side effect sequence', async () => {

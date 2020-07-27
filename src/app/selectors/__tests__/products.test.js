@@ -6,7 +6,7 @@ import {
   getTotalProductsQuantity,
   getTotalProductsPrice,
   getSelectedProducts
-} from './index'
+} from '..'
 
 describe('getIsLoadingProducts', () => {
   it('gets the loading state of the products when products are not loaded', () => {

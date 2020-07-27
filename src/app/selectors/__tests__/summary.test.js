@@ -1,7 +1,7 @@
 import {
   getDiscounts,
   getGrandTotal
-} from './index'
+} from '..'
 
 describe('getDiscounts', () => {
   it('returns the right discount object from the store', () => {

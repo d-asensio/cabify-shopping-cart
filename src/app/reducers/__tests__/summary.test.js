@@ -1,4 +1,4 @@
-import { reducer, actions } from './index'
+import { reducer, actions } from '..'
 
 describe('updateDiscounts', () => {
   it('updates the discounts array', () => {

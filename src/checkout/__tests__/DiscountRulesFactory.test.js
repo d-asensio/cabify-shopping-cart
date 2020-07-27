@@ -1,7 +1,7 @@
-import DiscountRulesFactory from './DiscountRulesFactory'
+import DiscountRulesFactory from '../DiscountRulesFactory'
 
-import DiscountRulesBuy1Get2 from './DiscountRulesBuy1Get2.js'
-import DiscountRulesBulkPercentage from './DiscountRulesBulkPercentage.js'
+import DiscountRulesBuy1Get2 from '../DiscountRulesBuy1Get2.js'
+import DiscountRulesBulkPercentage from '../DiscountRulesBulkPercentage.js'
 
 it('fails when initialized with a unsupported discount type', () => {
   expect(

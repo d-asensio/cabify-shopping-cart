@@ -1,5 +1,5 @@
-import DiscountRulesBuy1Get2 from './DiscountRulesBuy1Get2'
-import Product from './Product'
+import DiscountRulesBuy1Get2 from '../DiscountRulesBuy1Get2'
+import Product from '../Product'
 
 it('applies the right discount for 2 entitled products (1 of them is free)', () => {
   const discount = new DiscountRulesBuy1Get2({

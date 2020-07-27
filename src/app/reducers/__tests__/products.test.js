@@ -1,4 +1,4 @@
-import { reducer, actions } from './index'
+import { reducer, actions } from '..'
 
 describe('fetchProducts', () => {
   it('sets the loading state to `true`', () => {

@@ -1,5 +1,5 @@
-import DiscountRulesBulkPercentage from './DiscountRulesBulkPercentage'
-import Product from './Product'
+import DiscountRulesBulkPercentage from '../DiscountRulesBulkPercentage'
+import Product from '../Product'
 
 it('applies a discount if the entitled products reach the minimum required', () => {
   const discount = new DiscountRulesBulkPercentage({

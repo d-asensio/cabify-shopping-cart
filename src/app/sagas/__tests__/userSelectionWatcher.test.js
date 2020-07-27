@@ -1,10 +1,10 @@
 import { expectSaga } from 'redux-saga-test-plan'
 import { getContext, select } from 'redux-saga-test-plan/matchers'
 
-import { getSelectedProducts } from '../selectors'
-import { actions } from '../reducers'
+import { getSelectedProducts } from '../../selectors'
+import { actions } from '../../reducers'
 
-import userSelectionWatcher from './userSelectionWatcher'
+import userSelectionWatcher from '../userSelectionWatcher'
 
 describe('updateSummaryPrices', () => {
   it('responds to updateProductCounter actions triggering the right side effect sequence', async () => {
