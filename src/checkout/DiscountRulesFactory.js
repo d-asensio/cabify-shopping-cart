@@ -2,7 +2,7 @@ import DiscountRulesBuy1Get2 from './DiscountRulesBuy1Get2.js'
 import DiscountRulesBulkPercentage from './DiscountRulesBulkPercentage.js'
 
 class DiscountRulesFactory {
-  static createDiscountRule (type, options) {
+  static create (type, options) {
     switch (type) {
       case 'BUY_1_GET_2':
         return new DiscountRulesBuy1Get2(options)

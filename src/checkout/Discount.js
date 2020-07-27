@@ -3,7 +3,7 @@ import DiscountRulesFactory from './DiscountRulesFactory'
 class Discount {
   constructor ({ type, name, options }) {
     this._name = name
-    this._discountRules = DiscountRulesFactory.createDiscountRule(type, options)
+    this._discountRules = DiscountRulesFactory.create(type, options)
   }
 
   get name () { return this._name }

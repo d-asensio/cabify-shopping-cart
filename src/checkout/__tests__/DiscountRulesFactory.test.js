@@ -5,12 +5,12 @@ import DiscountRulesBulkPercentage from '../DiscountRulesBulkPercentage.js'
 
 it('fails when initialized with a unsupported discount type', () => {
   expect(
-    () => DiscountRulesFactory.createDiscountRule('UNSUPPORTED_DISCOUNT')
+    () => DiscountRulesFactory.create('UNSUPPORTED_DISCOUNT')
   ).toThrowErrorMatchingSnapshot()
 })
 
 it('creates a BUY_1_GET_2 discount rule', () => {
-  const discountRule = DiscountRulesFactory.createDiscountRule('BUY_1_GET_2', {
+  const discountRule = DiscountRulesFactory.create('BUY_1_GET_2', {
     entitledProductId: 'MUG'
   })
 
@@ -20,7 +20,7 @@ it('creates a BUY_1_GET_2 discount rule', () => {
 })
 
 it('creates a BULK_PERCENTAGE discount rule', () => {
-  const discountRule = DiscountRulesFactory.createDiscountRule('BULK_PERCENTAGE', {
+  const discountRule = DiscountRulesFactory.create('BULK_PERCENTAGE', {
     entitledProductId: 'TSHIRT',
     percentage: -5,
     minimumSelectionQuantity: 3
