@@ -39,13 +39,13 @@ I made my choices taking into account the product needs, striving for fast devel
 
 ## Architecture highlights
 
-This section is divided into two parts: [The Checkout class](#the-checkout-class) and [The app state](#the-app-state)
+This section is divided into three parts: [Checkout class](#checkout-class), [App state](#app-state) and [Checkout and app link](#checkout-and-app-link).
 
-### The Checkout class
+### Checkout class
 
 The Checkout class contains the business logic of the app, it is initialized with the pricing rules that will dictate the final price of the selected products.
 
-> You will find the implementation of the checkout class under the `src/checkout` directory.
+> You can find the implementation of the checkout class under the `src/checkout` directory.
 
 #### Pricing rules
 
@@ -141,11 +141,11 @@ console.log(discountAmout)
 // --> -5
 ```
 
-This pattern is very desirable in this case. Heading back to the [Product context](#product-context) section, we stated that the discount rules are prone to change, and this architecture will make the code comply with the [open–closed principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle), allowing us to add more discount types only by adding new code, reducing in this way the risk of introducing new bugs in future modifications.
+This pattern is very desirable in this case. Heading back to the [product context](#product-context) section, I stated that the discount rules are prone to change, and this architecture will make the code comply with the [open–closed principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle), allowing us to add more discount types only by adding new code, reducing in this way the risk of introducing new bugs in future modifications.
 
-### The app
+### App state
 
-The app is responsible handling the user input and updating the state that **can be derived from that input without applying any business logic**. However this statement can be intricate, it is easier to understand with an image:
+The app is responsible for handling the user input and updating the state that **can be derived from that input without applying any business logic**. However this statement can be intricate, it is easier to understand with an image:
 
 ![](assets/figure-1-app-user-input-derived-state.png)
 
@@ -199,7 +199,7 @@ There are two important things to notice here:
 
  > The quantity must be increased or decreased in steps of 10 if the user is pressing the shift key while clicking the buttons.
 
- It is considerably easier to implement, if the component do not have to be modified, and we introduce less risk:
+ It is considerably easier to implement, if the component do not have to be modified, and less risk is introduced:
 
  ```js
 function Counter () {
@@ -293,4 +293,56 @@ export function updateProductCounter (state, { payload }) {
 
 Once the state is updated, any subscribed component gets notified and re-renders if necessary to show the new information. But the components do not access the state directly, they use selectors to get the information they need, either if this information is accessible in a direct way or it has to be processed.
 
-This pattern creates a facade between the components and the state and provides more flexibility and robustness since it allows to modify components without having to modify the state and vice-versa.
+This pattern creates a contract between the components and the state and provides flexibility and robustness since it allows to modify components without having to modify the state and vice-versa.
+
+### Checkout and app link
+
+I have described the checkout class and the app, but how they link together?
+
+In my opinion, the frontend should be as "dummy" as possible: It should contain the minimum amount of business logic as possible and in case that this is unavoidable, the business logic should be isolated from the presentation layer.
+
+For this reason, I think that the checkout class should not be used directly from the reducers and thus it should be considered as an external service. Just like if we had an endpoint of an API that we could use to calculate the discounts and the final price of the user selection.
+
+This is not a wild idea and probably as our little store grows and we start to have tens of discount rules this logic will probably be migrated to the backend and exposed through an API endpoint.
+
+With this possibility in mind, I have created the checkout service, which is a [facade](https://en.wikipedia.org/wiki/Facade_pattern) between the application, the checkout class, and the price rules data.
+
+> The implementation of the checkout service can be found in `src/app/services/initCheckoutService.js`
+
+This service can be easily modified to get discounts and total price information from an API endpoint or any other data source that we want, without having to modify any other part of the application.
+
+This is an example of how to use it:
+
+```js
+const checkoutService = initCheckoutService()
+
+;(async () => {
+  const products = await checkoutService.getAvailableProducts()
+
+  console.log(products)
+  // -> [{ id: 'MUG', ... }, { id: 'TSHIRT', ... }, ...]
+
+  const selectedProducts = [
+    { id: 'MUG', quantity: 3 },
+    { id: 'TSHIRT', quantity: 2 }
+  ]
+
+  const summary = await checkoutService.getSummaryForSelection(selectedProducts)
+
+  console.log(summary)
+  // -> { 
+  //   discounts: [{ name: 'x3 Shirt offer', amount: -5 }],
+  //   total: 30
+  // }
+})()
+```
+
+> The `initCheckoutService` function uses the [revealing module pattern](https://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript) to provide private and public encapsulation by taking advantage of the javascript scope rules.
+
+Once created, the `checkoutService` can be used to get the available products and to calculate the summary given an array with the selected products.
+
+> Is worth to mention that this service will fetch the data of the products and discounts through the network, but I have not developed an API, I just used the `copy-webpack-plugin` to copy the contents of the `data` folder to the build directory and thus the json files that are placed there will be served as part of the bundle.
+
+To update the state with the data returned from the service I use [redux-saga](https://redux-saga.js.org/) and every time that the `updateProductCounter` action is dispatched, a saga hits the service to get the summary information and dispatches an action to update the state with the returned information. This is done this way because the checkout service could potentially be connected to an external data source so it can not be considered pure, the output can not be determined from the input since the API behavior is opaque from the application point of view.
+
+To make this process efficient, the `checkoutService` memoizes any fetched data so it will only fetch the required data once.
