@@ -228,3 +228,69 @@ This is an example of the [dependency inversion principle](https://en.wikipedia.
 The high-level module in our example is the `Counter` component and the low-level is the `Stepper` component, the first's logic does not depend on the latter, they communicate through an event-based interface.
 
 To conclude, I would like to remark on an implementation detail of the `Stepper` component. It uses a custom hook `useControlledInputNumber` to sanitize the input of the user by enforcing numerical values while allowing to edit the input. I think it could be useful for other people so I extracted it from this codebase and open-sourced it. You can find more details about it [here](https://github.com/d-asensio/use-controlled-input-number).
+
+#### Updating the state
+
+The state of the application is managed with [Redux](https://github.com/reduxjs/redux), as aforementioned in the [technologies of choice](#technologies-of-choice) section it is used in tandem with [redux-toolkit](https://github.com/reduxjs/redux-toolkit) that is intended to be the standard way to write Redux logic. But this is superficial, the interesting part to explain here is how the state is modeled to describe the information that our application needs to operate.
+
+```js
+const state = {
+  isLoadingProducts: false,
+  productsById: {
+    TSHIRT: {
+      id: 'TSHIRT',
+      name: 'Shirt',
+      code: 'X7R2OPX',
+      price: 20,
+      imageSrc: 'images/thumbnails/shirt.png'
+    },
+    MUG: {
+      id: 'MUG',
+      name: 'Mug',
+      code: 'X2G2OPZ',
+      price: 5,
+      imageSrc: 'images/thumbnails/mug.png'
+    },
+    CAP: {
+      id: 'CAP',
+      name: 'Cap',
+      code: 'X3W2OPY',
+      price: 10,
+      imageSrc: 'images/thumbnails/cap.png'
+    }
+  },
+  productCountersById: {
+    TSHIRT: 3,
+    MUG: 3,
+    CAP: 2
+  },
+  discounts: [
+    {
+      name: '2x1 Mug offer',
+      amount: -5
+    },
+    {
+      name: 'x3 Shirt offer',
+      amount: -3
+    }
+  ],
+  grandTotal: 87
+}
+```
+
+The product information and the counters are separated parts of the state, which is useful because when it comes to update the quantity of a product, the reducer only have to mutate the `productCountersById` object, which makes the code very simple and safer because the `productsById` object remains untouched:
+
+```js
+export function updateProductCounter (state, { payload }) {
+  const { productCountersById } = state
+  const { id, quantity } = payload
+
+  if (quantity < 0) return
+
+  productCountersById[id] = quantity
+}
+```
+
+Once the state is updated, any subscribed component gets notified and re-renders if necessary to show the new information. But the components do not access the state directly, they use selectors to get the information they need, either if this information is accessible in a direct way or it has to be processed.
+
+This pattern creates a facade between the components and the state and provides more flexibility and robustness since it allows to modify components without having to modify the state and vice-versa.
