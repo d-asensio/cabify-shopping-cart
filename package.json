@@ -8,8 +8,9 @@
   "main": "src/index.js",
   "scripts": {
     "dev": "webpack-dev-server .",
-    "build": "NODE_ENV=production webpack",
     "prebuild": "rimraf build",
+    "build": "NODE_ENV=production webpack",
+    "postbuild": "react-snap",
     "lint": "standard",
     "lint:fix": "standard --fix",
     "test": "jest --coverage --verbose",
@@ -62,6 +63,7 @@
     "husky": "^4.2.5",
     "jest": "^25.4.0",
     "lint-staged": ">=10",
+    "react-snap": "^1.23.0",
     "react-test-renderer": "^16.13.1",
     "redux-saga-test-plan": "^4.0.0-rc.3",
     "rimraf": "^3.0.2",
