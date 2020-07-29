@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const Dialog = styled.div`
-  overflow: hidden;
+  overflow: scroll;
 
   position: fixed;
   top: 50%;
