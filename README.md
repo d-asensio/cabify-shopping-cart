@@ -31,11 +31,11 @@ The technical context is more open in this case, this is a greenfield project so
 
 I made my choices taking into account the product needs, striving for fast development to produce maintainable, reliable, and clean code.
 
-- **React:** This is the choice that makes more sense since it is the UI library that I am most proficient on and the one you use it at Cabify.
+- **React:** This is the choice that makes more sense since it is the UI library that I am most proficient on and the one you use at Cabify.
 
 - **Styled-components:** CSS-in-JS is controversial I know, but it is good for fast-paced development, simplifies a lot the building toolset, and helps in writing semantic and understandable code. I think it is ideal for this project since it is small and the drawback of the bundle size will not be noticeable. In a different project with different needs, I would probably use SASS with a BEMIT architecture, I am pretty comfy working this way as well.
 
-> Take a look to the [performance](#performance) section for more information about how I optimized the build to statically serve critical CSS first.
+> Take a look to the [performance section](#performance) for more information about how I optimized the build to statically serve critical CSS first.
 
 - **Redux with redux-toolkit:** redux-toolkit provides useful defaults like `createReducer` that uses [immer](https://github.com/immerjs/immer) to mutate the state, which leads to cleaner code.
 
@@ -44,7 +44,7 @@ These are the main ones, but I also use others (`redux-saga`, `reselect`, `re-re
 
 ## Code Comments
 
-You won't find many comments on the code, there are some *quick explanations* about the responsibilities of some parts of the code, but not in very in-depth. There are also some *clarifications* about code in this document, especially at the [architecture overview](#architecture-overview) section.
+You won't find many comments on the code, there are some *quick explanations* about the responsibilities of some parts of the code, but not in very in-depth. There are also some *clarifications* about code in this document, especially at the [architecture overview section](#architecture-overview).
 
 In general, I prefer to put my efforts on writing clean code more than in explaining what is the intention of an intricate code.
 
@@ -160,23 +160,23 @@ console.log(discountAmout)
 // --> -5
 ```
 
-This pattern is very desirable in this case. Heading back to the [product context](#product-context) section, I stated that the discount rules are prone to change, and this architecture will make the code comply with the [open–closed principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle), allowing us to add more discount types only by adding new code, reducing in this way the risk of introducing new bugs in future modifications.
+This pattern is very desirable in this case. Heading back to the [product context section](#product-context), I stated that the discount rules are prone to change, and this architecture will make the code comply with the [open–closed principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle), allowing us to add more discount types only by adding new code, reducing the risk of introducing new bugs in future modifications.
 
 ### App state
 
 The app is responsible for handling the user input and updating the state that **can be derived from that input without applying any business logic**.
 
-Here you can differentiate the different parts of the app:
+Here you can differentiate the parts of the app:
 
 ![](assets/figure-1-app-user-input-derived-state.png)
 
 #### Handling user input
 
-The user input is handled by the `Stepper` component that is composed of an input element of type number and two buttons. This will allow the user to increment or decrement the quantity of each product one-by-one by using the buttons, or directly write the desired amount to the input.
+The user input is handled by the `Stepper` component that is composed of an input element of type number and two buttons. This will allow the user to increment or decrement the quantity of each product one-by-one by using the buttons, or directly write the desired amount.
 
 > The implementation of the Stepper component can be found in `src/app/components/Stepper.js`
 
-Here is an example of usage for this component:
+Here is an example of usage:
 
 ```js
 function Counter () {
@@ -206,7 +206,7 @@ There are two important things to notice here:
 
  > The quantity must be increased or decreased in steps of 10 if the user is pressing the shift key while clicking the buttons.
 
- It is considerably easier to implement, if the component do not have to be modified, and less risk is introduced:
+ It is considerably easier to implement: The component do not have to be modified, and less risk is introduced:
 
  ```js
 function Counter () {
@@ -226,7 +226,7 @@ function Counter () {
 }
 ```
 
-This is an example of the [dependency inversion principle](https://en.wikipedia.org/wiki/Dependency_inversion_principle) applied to react components, reviewing the principle statement:
+This is an example of the [dependency inversion principle](https://en.wikipedia.org/wiki/Dependency_inversion_principle) applied to react components. Reviewing the principle statement:
 
 > High-level modules should not depend on low-level modules. Both should depend on abstractions (e.g. interfaces).
 >
@@ -234,11 +234,11 @@ This is an example of the [dependency inversion principle](https://en.wikipedia.
 
 The high-level module in our example is the `Counter` and the low-level is the `Stepper`, the first's logic does not depend on the latter, they communicate through an event-based interface.
 
-To conclude, I would like to remark on an implementation detail of the `Stepper` component. It uses a custom hook `useControlledInputNumber` to sanitize the input of the user by enforcing numerical values while allowing to edit the input. I thought it could be useful for other people so I extracted it from this codebase and open-sourced it. You can find more details about it [here](https://github.com/d-asensio/use-controlled-input-number).
+To conclude, I would like to remark on an implementation detail of the `Stepper` component. It uses a custom hook `useControlledInputNumber` to sanitize the input of the user by enforcing numerical values while allowing to edit the value. I thought it could be useful for other people so I extracted it from this codebase and open-sourced it. You can find more details about it [here](https://github.com/d-asensio/use-controlled-input-number).
 
 #### Updating the state
 
-The state of the application is managed with [Redux](https://github.com/reduxjs/redux), as aforementioned in the [technologies of choice](#technologies-of-choice) section it is used in tandem with [redux-toolkit](https://github.com/reduxjs/redux-toolkit) that is intended to be the standard way to write Redux logic.
+The state of the application is managed with [Redux](https://github.com/reduxjs/redux), as aforementioned in the [technologies of choice section](#technologies-of-choice) it is used in tandem with [redux-toolkit](https://github.com/reduxjs/redux-toolkit) that is intended to be the standard way to write Redux logic.
 
 But this is superficial, the interesting part to explain here is how the state is modeled to describe the information that our application needs to operate:
 
@@ -308,7 +308,7 @@ This pattern creates a contract between the components and the state and provide
 
 I have described the checkout class and the app, but how they link together?
 
-In my opinion, the frontend should be as "dummy" as possible: It should contain the minimum amount of business logic as possible and in case that this is unavoidable, the business logic should be isolated from the presentation layer.
+In my opinion, the frontend should be as "dummy" as possible: It should contain the minimum amount of business logic and in case that this is unavoidable, the business logic should be isolated from the presentation layer.
 
 For this reason, I think that the checkout class should not be used directly from the reducers and thus it should be considered as an external service. Just like if we had an endpoint of an API that we could use to calculate the discounts and the final price of the user selection.
 
@@ -318,7 +318,7 @@ With this possibility in mind, I have created the checkout service, which is a [
 
 > The implementation of the checkout service can be found in `src/app/services/initCheckoutService.js`
 
-This service can be easily modified to get discounts and total price information from an API endpoint or any other data source that we want, without having to modify any other part of the application.
+This service can be easily modified to get discounts and total price information from an API endpoint or any other data source that we want without having to modify any other part of the application.
 
 This is an example of how to use it:
 
@@ -352,13 +352,15 @@ Once created, the `checkoutService` can be used to get the available products an
 
 > Is worth to mention that this service will fetch the data of the products and discounts through the network, but I have not developed an API, I just used the `copy-webpack-plugin` to copy the contents of the `data` folder to the build directory and thus the JSON files that are placed there will be served as part of the bundle.
 
-To update the state with the data returned from the service I use [redux-saga](https://redux-saga.js.org/) and every time that the `updateProductCounter` action is dispatched, a saga hits the service to get the summary information and dispatches an action to update the state with the returned information. This is done this way because the checkout service could potentially be connected to an external data source so it can not be considered pure, the output can not be determined from the input since the API behavior is opaque from the application point of view.
+To update the state with the data returned from the service I use [redux-saga](https://redux-saga.js.org/). Every time that the `updateProductCounter` action is dispatched, a saga is triggered, then, the service is requested about the summary information and an action is dispatched to update the state with the new information.
+
+This is done this way because the checkout service could potentially be connected to an external data source so it can not be considered pure, the output can not be determined from the input since the API behavior is opaque from the application point of view.
 
 To make this process efficient, the `checkoutService` memoizes any fetched data so it will only fetch the required data once.
 
 ## Performance
 
-These are the optimizations that I made to increase the performance of the app:
+These are the optimizations that I made to improve the performance of the app:
 
 ### Critical CSS first
 
@@ -368,7 +370,7 @@ Quoting Harry Roberts from his fantastic article [CSS and Network Performance](h
 
 This is important for having a good **first meaningful paint** and increase the responsiveness of the application so the user will perceive a faster load.
 
-The best way to do that is to identify all of the styles needed for the first render, inline them in `<style>` tags in the `<header>` of your document.
+The best way to do that is to identify all the styles that are needed for the first render and inline them in `<style>` tags in the `<header>` of the document.
 
 Thanks to the nature of [styled-components](https://github.com/styled-components/styled-components) we can use [react-snap](https://github.com/stereobooster/react-snap) to achieve this in a breeze because styled-components already uses the `<style>` tag to output the styles.
 
@@ -380,7 +382,7 @@ A selector is a function that receives the entire Redux state and returns a valu
 
 But this could become a problem if a selector performs an expensive operation because it will execute it every time the state is updated, even if the updated part does not have any effect on the result of the operation.
 
-To overcome this, I use [reselect](https://github.com/reduxjs/reselect). This library uses the concept of memoization to avoid redundant execution of our selectors. But this optimization can be pushed further by using [re-reselect](https://github.com/toomuchdesign/re-reselect) for certain selectors, for example, the `getProductQuantity` selector:
+To overcome this, I used [reselect](https://github.com/reduxjs/reselect). This library memoizes the selectors to avoid redundant executions. But this optimization can be pushed further by using [re-reselect](https://github.com/toomuchdesign/re-reselect) for certain selectors, for example, the `getProductQuantity` selector:
 
 ```js
 
@@ -420,7 +422,7 @@ const getProductQuantity = createCachedSelector(
 )
 ```
 
-Another optimization that worths mention it the case of the `getDiscounts` selector. As mentioned in the [architecture overview](#architecture-overview) section the discounts are calculated by the checkout class, which is considered an external service. This means that the discounts that in the state will change every time the service is consulted, even if the result is the same value that was already in the store.
+Another optimization that worths mention is the case of the `getDiscounts` selector. As mentioned in the [architecture overview section](#architecture-overview) the discounts are calculated by the checkout class, which is considered an external service. This means that discounts will change every time the service is consulted, even if the result is the same value that was already in the state.
 
 To overcome this, I have used a `createDeepEqualSelector` that compares the discounts objects deeply instead of shallowly. This technique should not be used for parts of the state whose change is predictable, but in this case, it is the best way to optimize this part.
 
