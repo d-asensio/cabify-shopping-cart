@@ -1,4 +1,4 @@
-export default {
+export default Object.freeze({
   isLoadingProducts: true,
   productsById: {},
   productCountersById: {},
@@ -8,4 +8,4 @@ export default {
   */
   discounts: [],
   grandTotal: 0
-}
+})
