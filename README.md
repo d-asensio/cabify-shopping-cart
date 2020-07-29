@@ -424,6 +424,8 @@ const getProductQuantity = createCachedSelector(
 
 Another optimization that worths mention is the case of the `getDiscounts` selector. As mentioned in the [architecture overview section](#architecture-overview) the discounts are calculated by the checkout class, which is considered an external service. This means that discounts will change every time the service is consulted, even if the result is the same value that was already in the state.
 
+> The implementation of the `getDiscounts` selector can be found in `src/app/selectors/summary.js`
+
 To overcome this, I have used a `createDeepEqualSelector` that compares the discounts objects deeply instead of shallowly. This technique should not be used for parts of the state whose change is predictable, but in this case, it is the best way to optimize this part.
 
 This is the result of the aforementioned optimizations and some others made by the `useSelector` hook that the components are using to get the information they need:
