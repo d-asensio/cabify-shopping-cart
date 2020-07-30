@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 import {
   getTotalProductsQuantity,
   getTotalProductsPrice
-} from '../selectors'
+} from '../../selectors'
 
 const Wrapper = styled.div`
   display: flex;

@@ -3,12 +3,11 @@ import styled from 'styled-components'
 
 import { useDispatch, useSelector } from 'react-redux'
 
-import { actions } from '../reducers'
-import { getProduct, getProductQuantity } from '../selectors'
+import { actions } from '../../../reducers'
+import { getProduct, getProductQuantity } from '../../../selectors'
 
-import Stepper from './Stepper'
-import ProductDetails from './ProductDetails'
-import TableGrid from './TableGrid'
+import { Stepper, TableGrid } from '../../atoms'
+import { ProductDetails } from '../'
 
 const PriceText = styled.span`
   font-size: 16px;

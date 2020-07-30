@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Thumbnail from './Thumbnail'
+import { Thumbnail } from '../atoms'
 
 const Wrapper = styled.div`
   display: flex;
@@ -37,7 +37,7 @@ const CodeCaption = styled.span`
   color: #a6a7b3;
 `
 
-function ProductDetail ({
+function ProductDetails ({
   name,
   code,
   imageSrc
@@ -56,4 +56,4 @@ function ProductDetail ({
   )
 }
 
-export default ProductDetail
+export default ProductDetails

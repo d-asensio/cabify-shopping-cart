@@ -3,9 +3,9 @@ import styled from 'styled-components'
 
 import { useSelector } from 'react-redux'
 
-import { getGrandTotal } from '../selectors'
+import { getGrandTotal } from '../../selectors'
 
-import Button from './Button'
+import { Button } from '../atoms'
 
 const PriceDetails = styled.div`
   display: flex;

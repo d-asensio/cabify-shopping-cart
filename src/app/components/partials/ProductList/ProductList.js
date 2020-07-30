@@ -3,10 +3,11 @@ import styled from 'styled-components'
 
 import { useDispatch, useSelector } from 'react-redux'
 
-import { getIsLoadingProducts, getProductList } from '../selectors'
-import { actions } from '../reducers'
+import { getIsLoadingProducts, getProductList } from '../../../selectors'
+import { actions } from '../../../reducers'
 
-import TableGrid from './TableGrid'
+import { TableGrid } from '../../atoms'
+
 import ProductLine from './ProductLine'
 
 const ColumnTitle = styled.span`

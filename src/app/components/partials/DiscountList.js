@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import { useSelector } from 'react-redux'
 
-import { getDiscounts } from '../selectors'
+import { getDiscounts } from '../../selectors'
 
 const Wrapper = styled.div`
   margin-bottom: 16px;

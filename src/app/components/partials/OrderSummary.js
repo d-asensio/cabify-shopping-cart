@@ -1,10 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import DiscountList from './DiscountList'
-import SectionHeading from './SectionHeading'
-import SelectionSummary from './SelectionSummary'
-import TotalSummary from './TotalSummary'
+import { SectionHeading } from '../atoms'
+import { DiscountList, SelectionSummary, TotalSummary } from '.'
 
 const Wrapper = styled.aside`
   display: flex;

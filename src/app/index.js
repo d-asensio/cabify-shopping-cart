@@ -1,8 +1,5 @@
 import React from 'react'
 
-import App from './App'
-import GlobalStyle from './GlobalStyle'
-
 import { configureStore } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux'
 import createSagaMiddleware from 'redux-saga'
@@ -11,6 +8,8 @@ import { reducer } from './reducers'
 import { saga } from './sagas'
 
 import { initCheckoutService } from './services'
+
+import App from './App'
 
 const checkoutService = initCheckoutService()
 
@@ -32,7 +31,6 @@ sagaMiddleware.run(saga)
 
 export default () => (
   <Provider store={store}>
-    <GlobalStyle />
     <App />
   </Provider>
 )
