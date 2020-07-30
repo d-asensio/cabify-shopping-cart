@@ -10,13 +10,13 @@ To write quality software one has to find the right balance between business nee
 
 The fact that this is a code challenge and not a real product does not mean that there is no context. The description of the exercise highlights three aspects that are considered valuable:
 
-- **Deliver production-ready code:** This means that the code must be reliable, or in other words, it must have tests.
+- **Deliver production-ready code:** Which means the code must be reliable, or in other words, it must have tests.
 - **Provide a solution that could be easy to grow and easy to add new functionality:** Which means that the code must be easily extensible on the arrival of new business needs, or in other words, maintainable.
 - **We value succinctness:** Which means that the product must be simple, or in other words, it must be an MVP that will be useful to validate the business model.
 
-But these are general considerations. To understand the context we have to focus on the nature of the product, what we know about similar products, and how it will likely evolve in future iterations if it was supposed to suit a real case scenario.
+However, these are general considerations. To understand the context we have to focus on the nature of the product, what we know about similar products, and how it will likely evolve in future iterations if it were supposed to suit a real case scenario.
 
-Acting as a product owner this is what I think is prone to change in a product like this (mini online store):
+Acting as a product owner, this is what I think is prone to change in a product like this (mini online store):
 
 - The price of the products
 - Discount rules
@@ -25,7 +25,7 @@ So the priority should go in this direction when it comes to defining the bounda
 
 ## Technical context
 
-The technical context is more open in this case, this is a greenfield project so there is no legacy code, and the only person involved in the development is me, so the choice of technologies, techniques, etc. will be very opinionated and not open to debate, which would be the healthier thing to do when working in real life.
+The technical context is more open in this case, this is a greenfield project so there is no legacy code, and the only person involved in the development is me, so the choice of technologies, techniques, etc. will be very opinionated and not open to debate, which would be the healthier thing to do in a real-life situation.
 
 ## Technologies of choice
 
@@ -35,16 +35,16 @@ I made my choices taking into account the product needs, striving for fast devel
 
 - **Styled-components:** CSS-in-JS is controversial I know, but it is good for fast-paced development, simplifies a lot the building toolset, and helps in writing semantic and understandable code. I think it is ideal for this project since it is small and the drawback of the bundle size will not be noticeable. In a different project with different needs, I would probably use SASS with a BEMIT architecture, I am pretty comfy working this way as well.
 
-> Take a look to the [performance section](#performance) for more information about how I optimized the build to statically serve critical CSS first.
+> Take a look at the [performance section](#performance) for more information about how I optimized the build to statically serve critical CSS first.
 
 - **Redux with redux-toolkit:** redux-toolkit provides useful defaults like `createReducer` that uses [immer](https://github.com/immerjs/immer) to mutate the state, which leads to cleaner code.
 
 
-These are the main ones, but I also use others (`redux-saga`, `reselect`, `re-reselect`, etc.) that I will mention as we go.
+These are the main ones, but I also used others (`redux-saga`, `reselect`, `re-reselect`, etc.) that I will mention as we go.
 
 ## Code Comments
 
-You won't find many comments on the code, there are some *quick explanations* about the responsibilities of some parts of the code, but not in very in-depth. There are also some *clarifications* about code in this document, especially at the [architecture overview section](#architecture-overview).
+You won't find many comments on the code, there are some *quick explanations* about the responsibilities of some parts of the code, but not very in-depth. There are also some *clarifications* about code in this document, especially at the [architecture overview section](#architecture-overview).
 
 In general, I prefer to put my efforts on writing clean code more than in explaining what is the intention of an intricate code.
 
@@ -54,7 +54,7 @@ I have followed TDD during the development process of this project, you can goss
 
 ## Commit guidelines
 
-I didn't use any strict commit guidelines to this project, I am aware of conventional commits, semantic release, and semantic versioning, but since I didn't need generating a changelog based on functionalities, I avoided this practices.
+I didn't use any strict commit guidelines to this project, I am aware of conventional commits, semantic release, and semantic versioning, but since I didn't need generating a changelog based on functionalities, I avoided these practices.
 
 ## Architecture overview
 
@@ -68,7 +68,7 @@ The Checkout class contains the business logic of the app, it is initialized wit
 
 #### Pricing rules
 
-The pricing rules are defined as an object containing products and discounts:
+Pricing rules are defined as an object containing products and discounts:
 
 ```js
 const pricingRules = {
@@ -160,11 +160,11 @@ console.log(discountAmout)
 // --> -5
 ```
 
-This pattern is very desirable in this case. Heading back to the [product context section](#product-context), I stated that the discount rules are prone to change, and this architecture will make the code comply with the [open–closed principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle), allowing us to add more discount types only by adding new code, reducing the risk of introducing new bugs in future modifications.
+This pattern is very convenient in this case. Heading back to the [product context section](#product-context), I stated that the discount rules are prone to change, and this architecture will make the code comply with the [open–closed principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle), allowing us to add more discount types only by adding new code, reducing the risk of introducing new bugs in future modifications.
 
 ### App state
 
-The app is responsible for handling the user input and updating the state that **can be derived from that input without applying any business logic**.
+The app is responsible for handling the user input and updating the state that **can be derived from that input without applying any business logic**. The business logic is instead handled by the checkout class.
 
 Here you can differentiate the parts of the app:
 
@@ -198,7 +198,7 @@ There are two important things to notice here:
  - It is a controlled component
  - It does not implement a mechanism to increase or decrease the value, so the decision of how to react to `onDecrease` and `onIncrease` is left to the consumer.
 
- The reason behind this design decision is **reusability**, while it is true that this component has a specific behavior in this application, it is potentially useful for another application or even for future features of this one.
+ The reason behind this design is **reusability**, while it is true that this component has a specific behavior in this application, it is potentially useful for another application or even for future features of this one.
  
  The component could implement the increasing/decreasing logic internally and just expose the `onChange` handler that would always provide the updated `newValue`, but this will force us to modify the component when new requirements come.
 
@@ -206,7 +206,7 @@ There are two important things to notice here:
 
  > The quantity must be increased or decreased in steps of 10 if the user is pressing the shift key while clicking the buttons.
 
- It is considerably easier to implement: The component do not have to be modified, and less risk is introduced:
+ It is considerably easier to implement: The component does not have to be modified, and less risk is introduced:
 
  ```js
 function Counter () {
@@ -234,7 +234,7 @@ This is an example of the [dependency inversion principle](https://en.wikipedia.
 
 The high-level module in our example is the `Counter` and the low-level is the `Stepper`, the first's logic does not depend on the latter, they communicate through an event-based interface.
 
-To conclude, I would like to remark on an implementation detail of the `Stepper` component. It uses a custom hook `useControlledInputNumber` to sanitize the input of the user by enforcing numerical values while allowing to edit the value. I thought it could be useful for other people so I extracted it from this codebase and open-sourced it. You can find more details about it [here](https://github.com/d-asensio/use-controlled-input-number).
+To conclude, I would like to remark on an implementation detail of the `Stepper`. It uses a custom hook `useControlledInputNumber` to sanitize the input of the user by enforcing numerical values while allowing to edit the value. I thought it could be useful for other people so I extracted it from this codebase and open-sourced it. You can find more details about it [here](https://github.com/d-asensio/use-controlled-input-number).
 
 #### Updating the state
 
@@ -287,7 +287,7 @@ const state = {
 }
 ```
 
-The product information and the counters are separated parts of the state, which is useful because when it comes to update the quantity of a product, the reducer only have to mutate the `productCountersById` object, which makes the code very simple and safer because the `productsById` object remains untouched:
+The product information and the counters are separated parts of the state, which is useful because when it comes to update the quantity of a product, the reducer only has to mutate the `productCountersById` object. This makes the code very simple and safer because the `productsById` object remains untouched:
 
 ```js
 export function updateProductCounter (state, { payload }) {
@@ -302,19 +302,19 @@ export function updateProductCounter (state, { payload }) {
 
 Once the state is updated, any subscribed component gets notified and re-renders if necessary to show the new information. But the components do not access the state directly, they use selectors to get the information they need, either if this information is accessible in a direct way or it has to be processed.
 
-This pattern creates a contract between the components and the state and provides flexibility and robustness since it allows to modify components without having to modify the state and vice-versa.
+This pattern creates a contract between the components and the state, providing flexibility and robustness. It allows to modify components without having to modify the state and vice-versa.
 
-### Checkout and app link
+### Checkout and app interaction
 
 I have described the checkout class and the app, but how they link together?
 
-In my opinion, the frontend should be as "dummy" as possible: It should contain the minimum amount of business logic and in case that this is unavoidable, the business logic should be isolated from the presentation layer.
+In my opinion, the frontend should be as "dummy" as possible: It should contain the minimum amount of business logic and in case that it is unavoidable, the business logic should be isolated from the presentation layer.
 
-For this reason, I think that the checkout class should not be used directly from the reducers and thus it should be considered as an external service. Just like if we had an endpoint of an API that we could use to calculate the discounts and the final price of the user selection.
+For this reason, I think that the checkout class should not be used directly from the reducers and thus it should be considered as an external service. Just like if we had an API endpoint that we could use to calculate the discounts and the final price of the user selection.
 
-This is not a wild idea and probably, as our little store grows, we will start to have tens of discount rules and this logic will probably be migrated to the backend and exposed through an API endpoint.
+This is not a wild idea and probably, as our little store grows, we will start to have tens of discount rules and this logic will probably be migrated to the backend and exposed through an API.
 
-With this possibility in mind, I have created the checkout service, which is a [facade](https://en.wikipedia.org/wiki/Facade_pattern) between the application, the checkout class, and the price rules data.
+With this possibility in mind, I have created the checkout service: A [facade](https://en.wikipedia.org/wiki/Facade_pattern) between the application, the checkout class, and the price rules data.
 
 > The implementation of the checkout service can be found in `src/app/services/initCheckoutService.js`
 
@@ -350,9 +350,9 @@ const checkoutService = initCheckoutService()
 
 Once created, the `checkoutService` can be used to get the available products and to calculate the summary given an array with the selected products.
 
-> Is worth to mention that this service will fetch the data of the products and discounts through the network, but I have not developed an API, I just used the `copy-webpack-plugin` to copy the contents of the `data` folder to the build directory and thus the JSON files that are placed there will be served as part of the bundle.
+> It is worth mentioning that this service will fetch the data of the products and discounts through the network, but I have not developed an API. I just used the `copy-webpack-plugin` to copy the contents of the `data` folder to the build directory and thus the JSON files that are placed there will be served as part of the bundle.
 
-To update the state with the data returned from the service I use [redux-saga](https://redux-saga.js.org/). Every time that the `updateProductCounter` action is dispatched, a saga is triggered, then, the service is requested about the summary information and an action is dispatched to update the state with the new information.
+To update the state with the data returned from the service I use [redux-saga](https://redux-saga.js.org/). Every time that the `updateProductCounter` action is dispatched, a saga is triggered, then the service is requested about the summary information and an action is dispatched to update the state with the new information.
 
 This is done this way because the checkout service could potentially be connected to an external data source so it can not be considered pure, the output can not be determined from the input since the API behavior is opaque from the application point of view.
 
@@ -368,11 +368,11 @@ Quoting Harry Roberts from his fantastic article [CSS and Network Performance](h
 
 > We need to construct the DOM and CSSOM as quickly as possible
 
-This is important for having a good **first meaningful paint** and increase the responsiveness of the application so the user will perceive a faster load.
+This is important to achieve a good **first meaningful paint** and increase the responsiveness of the application so the user will perceive a faster load.
 
 The best way to do that is to identify all the styles that are needed for the first render and inline them in `<style>` tags in the `<header>` of the document.
 
-Thanks to the nature of [styled-components](https://github.com/styled-components/styled-components) we can use [react-snap](https://github.com/stereobooster/react-snap) to achieve this in a breeze because styled-components already uses the `<style>` tag to output the styles.
+Thanks to the nature of [styled-components](https://github.com/styled-components/styled-components) we can use [react-snap](https://github.com/stereobooster/react-snap) to achieve this in a breeze since styled-components already uses the `<style>` tag to output the styles.
 
 ![](assets/figure-2-app-performance-report.png)
 
@@ -380,13 +380,13 @@ Thanks to the nature of [styled-components](https://github.com/styled-components
 
 A selector is a function that receives the entire Redux state and returns a value based on that, normally by applying some operations to the passed state.
 
-But this could become a problem if a selector performs an expensive operation because it will execute it every time the state is updated, even if the updated part does not have any effect on the result of the operation.
+This could become a problem if a selector performs an expensive operation because it will execute it every time the state is updated, even if the updated part does not have any effect on the result of the operation.
 
 To overcome this, I used [reselect](https://github.com/reduxjs/reselect). This library memoizes the selectors to avoid redundant executions. But this optimization can be pushed further by using [re-reselect](https://github.com/toomuchdesign/re-reselect) for certain selectors, for example, the `getProductQuantity` selector:
 
 ```js
 
-const getProductQuantity = createCached(
+const getProductQuantity = createSelector(
   getProductCountersById,
   (_, productId) => productId,
   (productCountersById, productId) => {
@@ -408,7 +408,7 @@ const mugQuantity = getProductQuantity(state, 'MUG')
 const capQuantity = getProductQuantity(state, 'CAP')
 ```
 
-Since `reselect` memoizes based on the parameters of the selector, the second parameter that is the `productId` invalidates the cache in each call, resulting in redundant operations. In cases like this, I used a `re-reselect` cached selector, that will memoize the result based on a key, an this key in this case is the `productId`:
+Since `reselect` memoizes based on the parameters of the selector, the second parameter `productId` invalidates the cache in each call, resulting in redundant operations. In cases like this, I used a `re-reselect` cached selector, that will memoize the result based on a key, which in this case is the `productId`:
 
 ```js
 const getProductQuantity = createCachedSelector(
@@ -422,7 +422,7 @@ const getProductQuantity = createCachedSelector(
 )
 ```
 
-Another optimization that worths mention is the case of the `getDiscounts` selector. As mentioned in the [architecture overview section](#architecture-overview) the discounts are calculated by the checkout class, which is considered an external service. This means that discounts will change every time the service is consulted, even if the result is the same value that was already in the state.
+Another optimization that worths mention is the case of the `getDiscounts` selector. As stated in the [architecture overview section](#architecture-overview) the discounts are calculated by the checkout class, which is considered an external service. This means that discounts will change every time the service is consulted, even if the result is the same value that was already in the state.
 
 > The implementation of the `getDiscounts` selector can be found in `src/app/selectors/summary.js`
 
