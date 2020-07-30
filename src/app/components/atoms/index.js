@@ -1,4 +1,5 @@
 export { default as Button } from './Button'
+export { default as FixedAspectRatio } from './FixedAspectRatio'
 export { default as Dialog } from './Dialog'
 export { default as Heading } from './Heading'
 export { default as Stepper } from './Stepper'
