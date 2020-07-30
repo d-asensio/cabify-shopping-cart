@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 
 const TableGrid = styled.div`
@@ -40,6 +41,15 @@ TableGrid.Row = Row
 TableGrid.defaultProps = {
   columnsTemplate: ['auto'],
   columnAlingments: []
+}
+
+TableGrid.propTypes = {
+  columnsTemplate: PropTypes.arrayOf(
+    PropTypes.string
+  ),
+  columnAlingments: PropTypes.arrayOf(
+    PropTypes.string
+  )
 }
 
 export default TableGrid

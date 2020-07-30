@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import { Thumbnail } from '../atoms'
@@ -54,6 +55,12 @@ function ProductDetails ({
       </Description>
     </Wrapper>
   )
+}
+
+ProductDetails.propTypes = {
+  name: PropTypes.string,
+  code: PropTypes.string,
+  imageSrc: PropTypes.string
 }
 
 export default ProductDetails

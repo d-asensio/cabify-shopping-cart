@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import useControlledInputNumber from 'use-controlled-input-number'
@@ -68,6 +69,13 @@ function Stepper ({ value, onChange, onDecrease, onIncrease }) {
       </CountButton>
     </Wrapper>
   )
+}
+
+Stepper.propTypes = {
+  value: PropTypes.number,
+  onChange: PropTypes.func,
+  onDecrease: PropTypes.func,
+  onIncrease: PropTypes.func
 }
 
 export default Stepper
