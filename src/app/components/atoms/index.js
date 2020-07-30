@@ -1,6 +1,6 @@
 export { default as Button } from './Button'
 export { default as Dialog } from './Dialog'
-export { default as SectionHeading } from './SectionHeading'
+export { default as Heading } from './Heading'
 export { default as Stepper } from './Stepper'
 export { default as TableGrid } from './TableGrid'
 export { default as Thumbnail } from './Thumbnail'

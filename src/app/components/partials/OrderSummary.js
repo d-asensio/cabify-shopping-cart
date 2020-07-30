@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { SectionHeading } from '../atoms'
+import { Heading } from '../atoms'
 import { DiscountList, SelectionSummary, TotalSummary } from '.'
 
 const Wrapper = styled.aside`
@@ -20,9 +20,9 @@ const Wrapper = styled.aside`
 function OrderSummary () {
   return (
     <Wrapper>
-      <SectionHeading>
+      <Heading>
         Order Summary
-      </SectionHeading>
+      </Heading>
       <SelectionSummary />
       <DiscountList />
       <TotalSummary />

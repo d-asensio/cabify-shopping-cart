@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const SectionHeading = styled.h2`
+const Heading = styled.h2`
   font-size: 18px;
   
   letter-spacing: -0.18px;
@@ -16,4 +16,4 @@ const SectionHeading = styled.h2`
   color: #212240;
 `
 
-export default SectionHeading
+export default Heading

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { SectionHeading } from '../atoms'
+import { Heading } from '../atoms'
 import { ProductList } from '.'
 
 const Wrapper = styled.section`
@@ -11,9 +11,9 @@ const Wrapper = styled.section`
 function ShoppingCart () {
   return (
     <Wrapper>
-      <SectionHeading>
+      <Heading>
         Shopping cart
-      </SectionHeading>
+      </Heading>
       <ProductList />
     </Wrapper>
   )
