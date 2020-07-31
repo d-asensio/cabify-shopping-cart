@@ -27,9 +27,9 @@ const Wrapper = styled.button`
   }
 `
 
-function ButtonIcon ({ className, glyph }) {
+function ButtonIcon ({ glyph, ...rest }) {
   return (
-    <Wrapper className={className}>
+    <Wrapper {...rest}>
       <Icon glyph={glyph} />
     </Wrapper>
   )
