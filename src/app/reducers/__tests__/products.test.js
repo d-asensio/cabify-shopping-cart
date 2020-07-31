@@ -142,7 +142,7 @@ describe('openProductInfo', () => {
     const newState = reducer(
       state,
       actions.openProductInfo({
-        productId: 'MUG'
+        id: 'MUG'
       })
     )
 
@@ -159,7 +159,7 @@ describe('openProductInfo', () => {
     const newState = reducer(
       state,
       actions.openProductInfo({
-        productId: 'TSHIRT'
+        id: 'TSHIRT'
       })
     )
 

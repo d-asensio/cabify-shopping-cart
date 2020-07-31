@@ -25,9 +25,9 @@ export function updateProductCounter (state, { payload }) {
 }
 
 export function openProductInfo (state, { payload }) {
-  const { productId } = payload
+  const { id } = payload
 
-  state.shownInfoProductId = productId
+  state.shownInfoProductId = id
 }
 
 export function closeProductInfo (state) {
