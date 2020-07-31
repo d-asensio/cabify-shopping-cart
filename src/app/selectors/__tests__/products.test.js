@@ -36,10 +36,7 @@ describe('getProduct', () => {
       productsById: {
         TSHIRT: {
           id: 'TSHIRT',
-          name: 'Shirt',
-          code: 'X7R2OPX',
-          price: 20.00,
-          imageSrc: 'images/thumbnails/shirt.png'
+          name: 'Shirt'
         }
       }
     }
@@ -48,10 +45,7 @@ describe('getProduct', () => {
       getProduct(state, 'TSHIRT')
     ).toMatchObject({
       id: 'TSHIRT',
-      name: 'Shirt',
-      code: 'X7R2OPX',
-      price: 20.00,
-      imageSrc: 'images/thumbnails/shirt.png'
+      name: 'Shirt'
     })
   })
 
@@ -72,17 +66,11 @@ describe('getProductList', () => {
       productsById: {
         TSHIRT: {
           id: 'TSHIRT',
-          name: 'Shirt',
-          code: 'X7R2OPX',
-          price: 20.00,
-          imageSrc: 'images/thumbnails/shirt.png'
+          name: 'Shirt'
         },
         MUG: {
           id: 'MUG',
-          name: 'Mug',
-          code: 'X7R2OPY',
-          price: 5.00,
-          imageSrc: 'images/thumbnails/mug.png'
+          name: 'Mug'
         }
       }
     }

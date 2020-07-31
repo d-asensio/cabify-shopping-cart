@@ -11,10 +11,7 @@ describe('fetchProducts', () => {
       getAvailableProducts: async () => [
         {
           id: 'TSHIRT',
-          name: 'Shirt',
-          code: 'X7R2OPX',
-          price: 20.00,
-          imageSrc: 'images/thumbnails/shirt.png'
+          name: 'Shirt'
         }
       ]
     }
@@ -32,10 +29,7 @@ describe('fetchProducts', () => {
           products: [
             {
               id: 'TSHIRT',
-              name: 'Shirt',
-              code: 'X7R2OPX',
-              price: 20.00,
-              imageSrc: 'images/thumbnails/shirt.png'
+              name: 'Shirt'
             }
           ]
         })

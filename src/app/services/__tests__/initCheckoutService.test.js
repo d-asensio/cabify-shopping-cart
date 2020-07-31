@@ -54,10 +54,7 @@ describe('getAvailableProducts', () => {
     const fetch = createFetchMock(() => [
       {
         id: 'TSHIRT',
-        name: 'Shirt',
-        code: 'X7R2OPX',
-        price: 20.0,
-        imageSrc: 'images/thumbnails/shirt.png'
+        name: 'Shirt'
       }
     ])
 
@@ -68,10 +65,7 @@ describe('getAvailableProducts', () => {
     ).toMatchObject([
       {
         id: 'TSHIRT',
-        name: 'Shirt',
-        code: 'X7R2OPX',
-        price: 20.0,
-        imageSrc: 'images/thumbnails/shirt.png'
+        name: 'Shirt'
       }
     ])
   })
