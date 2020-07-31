@@ -4,6 +4,7 @@
     "name": "Shirt",
     "code": "X7R2OPX",
     "price": 20.00,
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sodales semper elit sit amet interdum. Praesent volutpat sed elit vel consectetur. Nulla tempus tincidunt ex, sit amet semper ipsum imperdiet varius. In rutrum aliquam nisl, sagittis faucibus felis bibendum id.",
     "imageSrc": "images/products/shirt/main.jpg",
     "thumbnailSrc": "images/products/shirt/thumbnail.png"
   },
@@ -12,6 +13,7 @@
     "name": "Mug",
     "code": "X2G2OPZ",
     "price": 5.00,
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sodales semper elit sit amet interdum. Praesent volutpat sed elit vel consectetur. Nulla tempus tincidunt ex, sit amet semper ipsum imperdiet varius. In rutrum aliquam nisl, sagittis faucibus felis bibendum id.",
     "imageSrc": "images/products/mug/main.jpg",
     "thumbnailSrc": "images/products/mug/thumbnail.png"
   },
@@ -20,6 +22,7 @@
     "name": "Cap",
     "code": "X3W2OPY",
     "price": 10.00,
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sodales semper elit sit amet interdum. Praesent volutpat sed elit vel consectetur. Nulla tempus tincidunt ex, sit amet semper ipsum imperdiet varius. In rutrum aliquam nisl, sagittis faucibus felis bibendum id.",
     "imageSrc": "images/products/cap/main.jpg",
     "thumbnailSrc": "images/products/cap/thumbnail.png"
   }
