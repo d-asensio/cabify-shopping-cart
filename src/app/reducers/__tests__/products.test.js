@@ -72,7 +72,7 @@ describe('receiveProducts', () => {
 })
 
 describe('updateProductCounter', () => {
-  it('updates the product counter if the provided amount is positive', () => {
+  it('updates the product counter if the provided quantity is positive', () => {
     const state = {
       productCountersById: {
         TSHIRT: 0
@@ -92,7 +92,7 @@ describe('updateProductCounter', () => {
     ).toBe(2)
   })
 
-  it('updates the product counter if the provided amount is zero', () => {
+  it('updates the product counter if the provided quantity is zero', () => {
     const state = {
       productCountersById: {
         TSHIRT: 3
@@ -112,7 +112,7 @@ describe('updateProductCounter', () => {
     ).toBe(0)
   })
 
-  it('do not update the product counter if the provided amount is positive', () => {
+  it('do not update the product counter if the provided quantity is negative', () => {
     const state = {
       productCountersById: {
         TSHIRT: 0
@@ -130,6 +130,86 @@ describe('updateProductCounter', () => {
     expect(
       newState.productCountersById.TSHIRT
     ).toBe(0)
+  })
+})
+
+describe('decreaseProductCounter', () => {
+  it('decreases the product quantity', () => {
+    const state = {
+      productCountersById: {
+        TSHIRT: 10
+      }
+    }
+
+    const newState = reducer(
+      state,
+      actions.decreaseProductCounter({
+        id: 'TSHIRT'
+      })
+    )
+
+    expect(
+      newState.productCountersById.TSHIRT
+    ).toBe(9)
+  })
+
+  it('decreases the product quantity to zero', () => {
+    const state = {
+      productCountersById: {
+        TSHIRT: 1
+      }
+    }
+
+    const newState = reducer(
+      state,
+      actions.decreaseProductCounter({
+        id: 'TSHIRT'
+      })
+    )
+
+    expect(
+      newState.productCountersById.TSHIRT
+    ).toBe(0)
+  })
+
+  it('do not decreases if the quantity is zero', () => {
+    const state = {
+      productCountersById: {
+        TSHIRT: 0
+      }
+    }
+
+    const newState = reducer(
+      state,
+      actions.decreaseProductCounter({
+        id: 'TSHIRT'
+      })
+    )
+
+    expect(
+      newState.productCountersById.TSHIRT
+    ).toBe(0)
+  })
+})
+
+describe('increaseProductCounter', () => {
+  it('increases the product quantity', () => {
+    const state = {
+      productCountersById: {
+        TSHIRT: 0
+      }
+    }
+
+    const newState = reducer(
+      state,
+      actions.increaseProductCounter({
+        id: 'TSHIRT'
+      })
+    )
+
+    expect(
+      newState.productCountersById.TSHIRT
+    ).toBe(1)
   })
 })
 

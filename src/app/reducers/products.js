@@ -24,6 +24,22 @@ export function updateProductCounter (state, { payload }) {
   productCountersById[id] = quantity
 }
 
+export function increaseProductCounter (state, { payload }) {
+  const { productCountersById } = state
+  const { id } = payload
+
+  productCountersById[id] += 1
+}
+
+export function decreaseProductCounter (state, { payload }) {
+  const { productCountersById } = state
+  const { id } = payload
+
+  if (productCountersById[id] === 0) return
+
+  productCountersById[id] -= 1
+}
+
 export function openProductInfo (state, { payload }) {
   const { id } = payload
 
