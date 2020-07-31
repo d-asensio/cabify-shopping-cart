@@ -4,8 +4,20 @@ import styled from 'styled-components'
 
 import { Thumbnail } from '../atoms'
 
-const Wrapper = styled.div`
+const Wrapper = styled.button`
   display: flex;
+  align-items: center;
+
+  text-align: left;
+
+  padding: 0;
+
+  outline: none;
+  border: none;
+
+  background: #fff;
+
+  cursor: pointer;
 
   ${Thumbnail} {
     margin-right: 16px;
@@ -41,10 +53,13 @@ const CodeCaption = styled.span`
 function ProductDetails ({
   name,
   code,
-  thumbnailSrc
+  thumbnailSrc,
+  onClick
 }) {
   return (
-    <Wrapper>
+    <Wrapper
+      onClick={onClick}
+    >
       <Thumbnail
         src={thumbnailSrc}
         alt={name}
@@ -60,7 +75,8 @@ function ProductDetails ({
 ProductDetails.propTypes = {
   name: PropTypes.string,
   code: PropTypes.string,
-  thumbnailSrc: PropTypes.string
+  thumbnailSrc: PropTypes.string,
+  onClick: PropTypes.func
 }
 
 export default ProductDetails
