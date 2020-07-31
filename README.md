@@ -355,7 +355,7 @@ Once created, the `checkoutService` can be used to get the available products an
 
 > It is worth mentioning that this service will fetch the data of the products and discounts through the network, but I have not developed an API. I just used the `copy-webpack-plugin` to copy the contents of the `data` folder to the build directory and thus the JSON files that are placed there will be served as part of the bundle.
 
-To update the state with the data returned from the service I use [redux-saga](https://redux-saga.js.org/). Every time that the `updateProductCounter` action is dispatched, a saga is triggered, then the service is requested about the summary information and an action is dispatched to update the state with the new information.
+To update the state with the data returned from the service I used [redux-saga](https://redux-saga.js.org/). Every time that the `updateProductCounter` action is dispatched, a saga is triggered, then the service is requested about the summary information and an action is dispatched to update the state with the new information.
 
 This is done this way because the checkout service could potentially be connected to an external data source so it can not be considered pure, the output can not be determined from the input since the API behavior is opaque from the application point of view.
 
