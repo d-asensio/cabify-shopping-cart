@@ -34,6 +34,10 @@ function ProductLine ({ id }) {
     state => getProductQuantity(state, id)
   )
 
+  const handleDetailsClick = () => dispatch(
+    actions.openProductInfo({ id })
+  )
+
   const handleQuantityChange = quantity => dispatch(
     actions.updateProductCounter({
       id,
@@ -61,6 +65,7 @@ function ProductLine ({ id }) {
         thumbnailSrc={thumbnailSrc}
         name={name}
         code={code}
+        onClick={handleDetailsClick}
       />
       <Stepper
         value={quantity}
