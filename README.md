@@ -56,10 +56,6 @@ This application is thoroughly tested but I did not use the same methodology for
 
 - **Components**: I did not use TDD for the components because it does not help with the development process, its more quite the opposite. At the first phase of development components interface is very volatile and writing tests is a nuisance that do not add a lot of value. I try to keep the components as simple as possible, do not write tests from the beginning and when these clearly reach a good maturity point, then I write some integration tests.
 
-## Commit guidelines
-
-I didn't use any strict commit guidelines to this project, I am aware of conventional commits, semantic release, and semantic versioning, but since I didn't need generating a changelog based on functionalities, I avoided these practices.
-
 ## Component organization
 
 The components are organized into three categories:
@@ -450,3 +446,7 @@ This is the result of the aforementioned optimizations and some others made by t
 ![](assets/figure-3-selectors-performance-optimization-results.gif)
 
 As you can see only the affected parts are re-rendered.
+
+## Final notes
+
+I like to put all my love in the things I do, and so I did in this small project. I enjoyed it so much and regardless of the result I hope you also enjoyed the review.
