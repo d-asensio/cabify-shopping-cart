@@ -13,19 +13,24 @@ import {
   theme
 } from './styles'
 
-const Wrapper = styled(Modal)`
+const Wrapper = styled.main`
   display: grid;
   grid-template-columns: auto minmax(auto, 312px);
+
+  width: 100%;
+  height: 100%;
 `
 function App () {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <IconsSprite />
-      <Wrapper as='main'>
-        <ShoppingCart />
-        <OrderSummary />
-      </Wrapper>
+      <Modal>
+        <Wrapper as='main'>
+          <ShoppingCart />
+          <OrderSummary />
+        </Wrapper>
+      </Modal>
     </ThemeProvider>
   )
 }
