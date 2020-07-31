@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { createGlobalStyle } from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
 
 import {
   Dialog,
@@ -8,26 +8,10 @@ import {
 } from './components'
 
 import {
-  genericStyle
+  GlobalStyle,
+  IconsSprite,
+  theme
 } from './styles'
-
-const GlobalStyle = createGlobalStyle`
-  ${genericStyle}
-
-  body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 100vw;
-    height: 100vh;
-
-    background-image: url("../images/background.png");
-    background-color: #212240;
-    background-position: center;
-    background-size: cover;
-  }
-`
 
 const Wrapper = styled(Dialog)`
   display: grid;
@@ -35,13 +19,14 @@ const Wrapper = styled(Dialog)`
 `
 function App () {
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <GlobalStyle />
+      <IconsSprite />
       <Wrapper as='main'>
         <ShoppingCart />
         <OrderSummary />
       </Wrapper>
-    </>
+    </ThemeProvider>
   )
 }
 
