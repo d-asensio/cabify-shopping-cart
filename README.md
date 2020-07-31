@@ -62,7 +62,7 @@ The components are organized into three categories:
 
 - **Primitives**: The most atomic building blocks. The components under this category o not contain application-specific logic and they could be potentially extracted into a design system.
 
-- **Partials**: These are specific for this application, are build from **primitives** and contain application-specific logic and naming.
+- **Partials**: These are build from **primitives** and contain application-specific logic and naming.
 
 - **Views**: Fully functional parts of the application composed by **partials**.
 
