@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { Heading } from '../atoms'
+import { Heading } from '../primitives'
 import { DiscountList, SelectionSummary, TotalSummary } from '.'
 
 const Wrapper = styled.aside`

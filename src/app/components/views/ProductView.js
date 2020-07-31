@@ -7,7 +7,7 @@ import { actions } from '../../reducers'
 import {
   Layout,
   Modal
-} from '../atoms'
+} from '../primitives'
 
 import {
   ProductPicture,

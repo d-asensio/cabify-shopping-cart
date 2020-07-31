@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getIsLoadingProducts, getProductList } from '../../../selectors'
 import { actions } from '../../../reducers'
 
-import { TableGrid } from '../../atoms'
+import { TableGrid } from '../../primitives'
 
 import ProductLine from './ProductLine'
 

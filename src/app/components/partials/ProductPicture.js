@@ -8,7 +8,7 @@ import { getProduct } from '../../selectors'
 
 import {
   FixedAspectRatio
-} from '../atoms'
+} from '../primitives'
 
 const Picture = styled.img`
   height: 100%;

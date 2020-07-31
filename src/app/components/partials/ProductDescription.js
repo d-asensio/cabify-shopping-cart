@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { actions } from '../../reducers'
 import { getProduct } from '../../selectors'
 
-import { Button } from '../atoms'
+import { Button } from '../primitives'
 
 import ProductInfo from './ProductInfo'
 

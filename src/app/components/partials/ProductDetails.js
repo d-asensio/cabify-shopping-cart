@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import { Thumbnail } from '../atoms'
+import { Thumbnail } from '../primitives'
 
 const Wrapper = styled.button`
   display: flex;

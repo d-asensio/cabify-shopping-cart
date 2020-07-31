@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 
 import { getGrandTotal } from '../../selectors'
 
-import { Button } from '../atoms'
+import { Button } from '../primitives'
 
 const PriceDetails = styled.div`
   display: flex;

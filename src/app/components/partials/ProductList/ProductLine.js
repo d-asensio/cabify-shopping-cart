@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { actions } from '../../../reducers'
 import { getProduct, getProductQuantity } from '../../../selectors'
 
-import { Stepper, TableGrid } from '../../atoms'
+import { Stepper, TableGrid } from '../../primitives'
 import { ProductDetails } from '../'
 
 const PriceText = styled.span`

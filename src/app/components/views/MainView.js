@@ -3,7 +3,7 @@ import React from 'react'
 import {
   Layout,
   Modal
-} from '../atoms'
+} from '../primitives'
 
 import {
   ShoppingCart,

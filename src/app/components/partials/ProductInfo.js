@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import { Heading } from '../atoms'
+import { Heading } from '../primitives'
 
 const Wrapper = styled.div`
   margin-bottom: 32px;
