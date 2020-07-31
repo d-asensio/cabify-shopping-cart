@@ -251,21 +251,24 @@ const state = {
       name: 'Shirt',
       code: 'X7R2OPX',
       price: 20,
-      imageSrc: 'images/thumbnails/shirt.png'
+      imageSrc: 'images/products/shirt/main.jpg',
+      thumbnailSrc: 'images/products/shirt/thumbnail.png'
     },
     MUG: {
       id: 'MUG',
       name: 'Mug',
       code: 'X2G2OPZ',
       price: 5,
-      imageSrc: 'images/thumbnails/mug.png'
+      imageSrc: 'images/products/mug/main.jpg',
+      thumbnailSrc: 'images/products/mug/thumbnail.png'
     },
     CAP: {
       id: 'CAP',
       name: 'Cap',
       code: 'X3W2OPY',
       price: 10,
-      imageSrc: 'images/thumbnails/cap.png'
+      imageSrc: 'images/products/cap/main.jpg',
+      thumbnailSrc: 'images/products/cap/thumbnail.png'
     }
   },
   productCountersById: {

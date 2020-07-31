@@ -25,7 +25,7 @@ function ProductLine ({ id }) {
     name,
     code,
     price,
-    imageSrc
+    thumbnailSrc
   } = useSelector(
     state => getProduct(state, id)
   )
@@ -58,7 +58,7 @@ function ProductLine ({ id }) {
   return (
     <TableGrid.Row>
       <ProductDetails
-        imageSrc={imageSrc}
+        thumbnailSrc={thumbnailSrc}
         name={name}
         code={code}
       />

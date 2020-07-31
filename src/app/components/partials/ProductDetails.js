@@ -41,12 +41,12 @@ const CodeCaption = styled.span`
 function ProductDetails ({
   name,
   code,
-  imageSrc
+  thumbnailSrc
 }) {
   return (
     <Wrapper>
       <Thumbnail
-        src={imageSrc}
+        src={thumbnailSrc}
         alt={name}
       />
       <Description>
@@ -60,7 +60,7 @@ function ProductDetails ({
 ProductDetails.propTypes = {
   name: PropTypes.string,
   code: PropTypes.string,
-  imageSrc: PropTypes.string
+  thumbnailSrc: PropTypes.string
 }
 
 export default ProductDetails

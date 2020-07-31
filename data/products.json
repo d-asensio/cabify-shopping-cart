@@ -4,20 +4,23 @@
     "name": "Shirt",
     "code": "X7R2OPX",
     "price": 20.00,
-    "imageSrc": "images/products/shirt/thumbnail.png"
+    "imageSrc": "images/products/shirt/main.jpg",
+    "thumbnailSrc": "images/products/shirt/thumbnail.png"
   },
   {
     "id": "MUG",
     "name": "Mug",
     "code": "X2G2OPZ",
     "price": 5.00,
-    "imageSrc": "images/products/mug/thumbnail.png"
+    "imageSrc": "images/products/mug/main.jpg",
+    "thumbnailSrc": "images/products/mug/thumbnail.png"
   },
   {
     "id": "CAP",
     "name": "Cap",
     "code": "X3W2OPY",
     "price": 10.00,
-    "imageSrc": "images/products/cap/thumbnail.png"
+    "imageSrc": "images/products/cap/main.jpg",
+    "thumbnailSrc": "images/products/cap/thumbnail.png"
   }
 ]
