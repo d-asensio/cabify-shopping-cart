@@ -4,7 +4,7 @@
     "name": "Shirt",
     "code": "X7R2OPX",
     "price": 20.00,
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sodales semper elit sit amet interdum. Praesent volutpat sed elit vel consectetur. Nulla tempus tincidunt ex, sit amet semper ipsum imperdiet varius. In rutrum aliquam nisl, sagittis faucibus felis bibendum id.",
+    "description": "Show to the world that you are eco-responsible by proudly wearing the Cabify t-shirt. It is simple, comfortable and uses non-toxic, low-impact dyes and over 80% of garments are made with sustainable materials and processes.",
     "imageSrc": "images/products/shirt/main.jpg",
     "thumbnailSrc": "images/products/shirt/thumbnail.png"
   },
@@ -13,7 +13,7 @@
     "name": "Mug",
     "code": "X2G2OPZ",
     "price": 5.00,
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sodales semper elit sit amet interdum. Praesent volutpat sed elit vel consectetur. Nulla tempus tincidunt ex, sit amet semper ipsum imperdiet varius. In rutrum aliquam nisl, sagittis faucibus felis bibendum id.",
+    "description": "They say that programmers turn coffee into code, but what about designers? If you are a designer, the Cabify mug will help you turn tea into stylish designs, and you will be able to check the Cabify Pantone cheatsheet at first sight!",
     "imageSrc": "images/products/mug/main.jpg",
     "thumbnailSrc": "images/products/mug/thumbnail.png"
   },
@@ -22,7 +22,7 @@
     "name": "Cap",
     "code": "X3W2OPY",
     "price": 10.00,
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sodales semper elit sit amet interdum. Praesent volutpat sed elit vel consectetur. Nulla tempus tincidunt ex, sit amet semper ipsum imperdiet varius. In rutrum aliquam nisl, sagittis faucibus felis bibendum id.",
+    "description": "It is important to protect yourself from the sun, specially in summer. With the Cabify cap you'll get the protection you need and it complies with the feminist manifestations dress code. Win! Win!",
     "imageSrc": "images/products/cap/main.jpg",
     "thumbnailSrc": "images/products/cap/thumbnail.png"
   }
