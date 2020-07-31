@@ -1,4 +1,5 @@
 import {
+  getShownInfoProductId,
   getIsLoadingProducts,
   getProduct,
   getProductList,
@@ -27,6 +28,28 @@ describe('getIsLoadingProducts', () => {
     expect(
       getIsLoadingProducts(state)
     ).toBe(false)
+  })
+})
+
+describe('getShownInfoProductId', () => {
+  it('gets the shown info product id', () => {
+    const state = {
+      shownInfoProductId: 'MUG'
+    }
+
+    expect(
+      getShownInfoProductId(state)
+    ).toBe('MUG')
+  })
+
+  it('gets the null if no products are shown', () => {
+    const state = {
+      shownInfoProductId: null
+    }
+
+    expect(
+      getShownInfoProductId(state)
+    ).toBe(null)
   })
 })
 

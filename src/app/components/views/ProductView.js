@@ -3,6 +3,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { actions } from '../../reducers'
+import { getShownInfoProductId } from '../../selectors'
 
 import {
   Layout,
@@ -18,7 +19,7 @@ function ProductView () {
   const dispatch = useDispatch()
 
   const shownInfoProductId = useSelector(
-    state => state.shownInfoProductId
+    getShownInfoProductId
   )
 
   const handleCloseButtonClick = () => {

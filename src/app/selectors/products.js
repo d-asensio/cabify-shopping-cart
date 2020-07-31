@@ -4,6 +4,7 @@ import { createCachedSelector } from 're-reselect'
 const getProductsById = ({ productsById }) => productsById
 const getProductCountersById = ({ productCountersById }) => productCountersById
 
+export const getShownInfoProductId = ({ shownInfoProductId }) => shownInfoProductId
 export const getIsLoadingProducts = ({ isLoadingProducts }) => isLoadingProducts
 
 export const getProductList = createSelector(
