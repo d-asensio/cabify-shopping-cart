@@ -1,5 +1,6 @@
 export { default as DiscountList } from './DiscountList'
 export { default as OrderSummary } from './OrderSummary'
+export { default as ProductDescription } from './ProductDescription'
 export { default as ProductDetails } from './ProductDetails'
 export { default as ProductInfo } from './ProductInfo'
 export { default as ProductList } from './ProductList'
