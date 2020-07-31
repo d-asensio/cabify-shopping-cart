@@ -48,9 +48,13 @@ You won't find many comments on the code, there are some *quick explanations* ab
 
 In general, I prefer to put my efforts on writing clean code more than in explaining what is the intention of an intricate code.
 
-## Test-Driven Development
+## Testing
 
-I have followed TDD during the development process of this project, you can gossip the git log, and you'll find every change paired with its test and every fixed bug with a test that covers it.
+This application is thoroughly tested but I did not use the same methodology for all the parts:
+
+- **Checkout class, reducers, selectors and sagas**: I used TDD for designing these parts because can be easily unit-tested, and actually TDD helps in the design.
+
+- **Components**: I did not use TDD for the components because it does not help with the development process, its more quite the opposite. At the first phase of development components interface is very volatile and writing tests is a nuisance that do not add a lot of value. I try to keep the components as simple as possible, do not write tests from the beginning and when these clearly reach a good maturity point, then I write some integration tests.
 
 ## Commit guidelines
 
