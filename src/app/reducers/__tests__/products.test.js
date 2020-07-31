@@ -132,3 +132,56 @@ describe('updateProductCounter', () => {
     ).toBe(0)
   })
 })
+
+describe('openProductInfo', () => {
+  it('sets the shownInfoProductId', () => {
+    const state = {
+      shownInfoProductId: null
+    }
+
+    const newState = reducer(
+      state,
+      actions.openProductInfo({
+        productId: 'MUG'
+      })
+    )
+
+    expect(
+      newState.shownInfoProductId
+    ).toBe('MUG')
+  })
+
+  it('changes the shownInfoProductId', () => {
+    const state = {
+      shownInfoProductId: 'MUG'
+    }
+
+    const newState = reducer(
+      state,
+      actions.openProductInfo({
+        productId: 'TSHIRT'
+      })
+    )
+
+    expect(
+      newState.shownInfoProductId
+    ).toBe('TSHIRT')
+  })
+})
+
+describe('closeProductInfo', () => {
+  it('unsets the shownInfoProductId', () => {
+    const state = {
+      shownInfoProductId: 'MUG'
+    }
+
+    const newState = reducer(
+      state,
+      actions.closeProductInfo()
+    )
+
+    expect(
+      newState.shownInfoProductId
+    ).toBe(null)
+  })
+})

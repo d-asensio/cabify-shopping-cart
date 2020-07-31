@@ -1,5 +1,6 @@
 export default Object.freeze({
   isLoadingProducts: true,
+  shownInfoProductId: null,
   productsById: {},
   productCountersById: {},
   /**

@@ -23,3 +23,13 @@ export function updateProductCounter (state, { payload }) {
 
   productCountersById[id] = quantity
 }
+
+export function openProductInfo (state, { payload }) {
+  const { productId } = payload
+
+  state.shownInfoProductId = productId
+}
+
+export function closeProductInfo (state) {
+  state.shownInfoProductId = null
+}
