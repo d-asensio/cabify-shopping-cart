@@ -28,6 +28,8 @@ export function increaseProductCounter (state, { payload }) {
   const { productCountersById } = state
   const { id } = payload
 
+  if (!productCountersById[id]) productCountersById[id] = 0
+
   productCountersById[id] += 1
 }
 
@@ -35,7 +37,7 @@ export function decreaseProductCounter (state, { payload }) {
   const { productCountersById } = state
   const { id } = payload
 
-  if (productCountersById[id] === 0) return
+  if (!productCountersById[id] || productCountersById[id] === 0) return
 
   productCountersById[id] -= 1
 }

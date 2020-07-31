@@ -153,6 +153,23 @@ describe('decreaseProductCounter', () => {
     ).toBe(9)
   })
 
+  it('decreases the product quantity for the first time', () => {
+    const state = {
+      productCountersById: {}
+    }
+
+    const newState = reducer(
+      state,
+      actions.decreaseProductCounter({
+        id: 'TSHIRT'
+      })
+    )
+
+    expect(
+      newState.productCountersById.TSHIRT
+    ).toBe(undefined)
+  })
+
   it('decreases the product quantity to zero', () => {
     const state = {
       productCountersById: {
@@ -194,6 +211,42 @@ describe('decreaseProductCounter', () => {
 
 describe('increaseProductCounter', () => {
   it('increases the product quantity', () => {
+    const state = {
+      productCountersById: {
+        TSHIRT: 1
+      }
+    }
+
+    const newState = reducer(
+      state,
+      actions.increaseProductCounter({
+        id: 'TSHIRT'
+      })
+    )
+
+    expect(
+      newState.productCountersById.TSHIRT
+    ).toBe(2)
+  })
+
+  it('increases the product quantity for the first time', () => {
+    const state = {
+      productCountersById: {}
+    }
+
+    const newState = reducer(
+      state,
+      actions.increaseProductCounter({
+        id: 'TSHIRT'
+      })
+    )
+
+    expect(
+      newState.productCountersById.TSHIRT
+    ).toBe(1)
+  })
+
+  it('increases the product quantity from 0', () => {
     const state = {
       productCountersById: {
         TSHIRT: 0
