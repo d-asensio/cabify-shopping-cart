@@ -30,6 +30,8 @@ const CloseButton = styled(ButtonIcon).attrs(() => ({
   position: absolute;
   top: 32px;
   right: 32px;
+
+  z-index: 1;
 `
 
 function Modal ({ closable, children, onCloseClick }) {
