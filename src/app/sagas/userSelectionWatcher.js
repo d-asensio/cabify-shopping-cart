@@ -38,4 +38,14 @@ export default function * userSelectionWatcher () {
     actions.updateProductCounter,
     updateSummaryPrices
   )
+
+  yield takeEvery(
+    actions.decreaseProductCounter,
+    updateSummaryPrices
+  )
+
+  yield takeEvery(
+    actions.increaseProductCounter,
+    updateSummaryPrices
+  )
 }

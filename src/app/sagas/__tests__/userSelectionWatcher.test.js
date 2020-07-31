@@ -62,4 +62,114 @@ describe('updateSummaryPrices', () => {
       )
       .silentRun()
   })
+
+  it('responds to increaseProductCounter actions triggering the right side effect sequence', async () => {
+    const context = {
+      getSummaryForSelection: async () => ({
+        discounts: [
+          {
+            name: 'x3 Shirt offer',
+            amount: -3.00
+          }
+        ],
+        total: 57
+      })
+    }
+
+    const selectedProducts = [
+      {
+        id: 'MUG',
+        quantity: 3
+      }
+    ]
+
+    await expectSaga(userSelectionWatcher)
+      .provide([
+        [
+          getContext('checkoutService'),
+          context
+        ],
+        [
+          select(getSelectedProducts),
+          selectedProducts
+        ]
+      ])
+      .getContext('checkoutService')
+      .put(
+        actions.updateDiscounts({
+          discounts: [
+            {
+              name: 'x3 Shirt offer',
+              amount: -3.00
+            }
+          ]
+        })
+      )
+      .put(
+        actions.updateGrandTotal({
+          total: 57
+        })
+      )
+      .dispatch(
+        actions.increaseProductCounter({
+          id: 'MUG'
+        })
+      )
+      .silentRun()
+  })
+
+  it('responds to decreaseProductCounter actions triggering the right side effect sequence', async () => {
+    const context = {
+      getSummaryForSelection: async () => ({
+        discounts: [
+          {
+            name: 'x3 Shirt offer',
+            amount: -3.00
+          }
+        ],
+        total: 57
+      })
+    }
+
+    const selectedProducts = [
+      {
+        id: 'MUG',
+        quantity: 3
+      }
+    ]
+
+    await expectSaga(userSelectionWatcher)
+      .provide([
+        [
+          getContext('checkoutService'),
+          context
+        ],
+        [
+          select(getSelectedProducts),
+          selectedProducts
+        ]
+      ])
+      .getContext('checkoutService')
+      .put(
+        actions.updateDiscounts({
+          discounts: [
+            {
+              name: 'x3 Shirt offer',
+              amount: -3.00
+            }
+          ]
+        })
+      )
+      .put(
+        actions.updateGrandTotal({
+          total: 57
+        })
+      )
+      .dispatch(
+        actions.decreaseProductCounter({
+          id: 'MUG'
+        })
+      )
+      .silentRun()
+  })
 })
