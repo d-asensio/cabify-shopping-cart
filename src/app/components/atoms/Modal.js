@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const Dialog = styled.div`
+const Modal = styled.div`
   overflow: scroll;
 
   position: fixed;
@@ -20,4 +20,4 @@ const Dialog = styled.div`
   border-radius: 4px;
 `
 
-export default Dialog
+export default Modal
