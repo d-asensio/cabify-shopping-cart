@@ -7,14 +7,17 @@ import {
   theme
 } from './styles'
 
-import { MainView } from './components'
+import { MainView, ProductView } from './components'
 
 function App () {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <IconsSprite />
-      <MainView />
+      <>
+        <MainView />
+        <ProductView />
+      </>
     </ThemeProvider>
   )
 }
