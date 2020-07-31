@@ -9,6 +9,8 @@ const Icon = styled.svg.attrs(({ glyph }) => ({
 
   flex-shrink: 0;
 
+  transition: fill 200ms;
+
   fill: #A7A7B3;
 
   width: 24px;
