@@ -46,16 +46,14 @@ function ProductLine ({ id }) {
   )
 
   const handleDecrease = () => dispatch(
-    actions.updateProductCounter({
-      id,
-      quantity: quantity - 1
+    actions.decreaseProductCounter({
+      id
     })
   )
 
   const handleIncrease = () => dispatch(
-    actions.updateProductCounter({
-      id,
-      quantity: quantity + 1
+    actions.increaseProductCounter({
+      id
     })
   )
 
