@@ -56,6 +56,16 @@ I have followed TDD during the development process of this project, you can goss
 
 I didn't use any strict commit guidelines to this project, I am aware of conventional commits, semantic release, and semantic versioning, but since I didn't need generating a changelog based on functionalities, I avoided these practices.
 
+## Component organization
+
+The components are organized into three categories:
+
+- **Primitives**: The most atomic building blocks. The components under this category o not contain application-specific logic and they could be potentially extracted into a design system.
+
+- **Partials**: These are specific for this application, are build from **primitives** and contain application-specific logic and naming.
+
+- **Views**: Fully functional parts of the application composed by **partials**.
+
 ## Architecture overview
 
 This section is divided into three parts: [Checkout class](#checkout-class), [App state](#app-state) and [Checkout and app link](#checkout-and-app-link).
