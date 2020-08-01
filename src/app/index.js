@@ -4,6 +4,8 @@ import { configureStore } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux'
 import createSagaMiddleware from 'redux-saga'
 
+import fetch from 'cross-fetch'
+
 import { reducer } from './reducers'
 import { saga } from './sagas'
 
@@ -11,7 +13,12 @@ import { initCheckoutService } from './services'
 
 import App from './App'
 
-const checkoutService = initCheckoutService()
+const { SERVICE_HOST_URL } = process.env
+
+const checkoutService = initCheckoutService({
+  fetch,
+  hostUrl: SERVICE_HOST_URL
+})
 
 const sagaMiddleware = createSagaMiddleware({
   context: {

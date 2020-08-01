@@ -2,6 +2,7 @@ const fs = require('fs')
 const path = require('path')
 
 const {
+  EnvironmentPlugin,
   LoaderOptionsPlugin,
   HotModuleReplacementPlugin,
   NoEmitOnErrorsPlugin
@@ -22,6 +23,8 @@ const DATA_DIR = path.resolve(__dirname, 'data')
 const PUBLIC_DIR = path.join(__dirname, 'public')
 const MAIN_HTML_FILE = path.join(PUBLIC_DIR, 'index.html')
 const MANIFEST_JSON_FILE = path.join(PUBLIC_DIR, 'manifest.json')
+
+const SERVICE_HOST_URL = ''
 
 // #endregion
 
@@ -71,6 +74,9 @@ module.exports = {
     ]
   },
   plugins: [
+    new EnvironmentPlugin({
+      SERVICE_HOST_URL
+    }),
     new LoaderOptionsPlugin({
       minimize: true,
       debug: false,
