@@ -198,3 +198,34 @@ it('open product modal and close', async () => {
     shirtInput
   ).toHaveAttribute('value', '1')
 })
+
+it('click the checkout button', async () => {
+  const { findByText } = render(<App />)
+
+  const checkoutButton = await findByText('Checkout')
+
+  const summaryString = JSON.stringify({
+    selectedProducts: [
+      {
+        id: 'TSHIRT',
+        quantity: 1
+      },
+      {
+        id: 'MUG',
+        quantity: 0
+      },
+      {
+        id: 'CAP',
+        quantity: 0
+      }
+    ],
+    discounts: [],
+    grandTotal: 20
+  }, null, 2)
+
+  jest.spyOn(window, 'alert').mockImplementation(alertText => {
+    expect(alertText).toMatch(summaryString)
+  })
+
+  await userEvent.click(checkoutButton)
+})

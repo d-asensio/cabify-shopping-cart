@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import { useSelector } from 'react-redux'
 
-import { getGrandTotal } from '../../selectors'
+import { getGrandTotal, getDiscounts, getSelectedProducts } from '../../selectors'
 
 import { Button } from '../primitives'
 
@@ -37,10 +37,28 @@ const GrandTotal = styled.span`
   text-transform: uppercase;
 `
 
-function TotalSummary ({ onSelectionConfirmation }) {
+function TotalSummary () {
+  const selectedProducts = useSelector(
+    getSelectedProducts
+  )
+
+  const discounts = useSelector(
+    getDiscounts
+  )
+
   const grandTotal = useSelector(
     getGrandTotal
   )
+
+  const handleSelectionConfirmation = useCallback(() => {
+    alert(
+      JSON.stringify({
+        selectedProducts,
+        discounts,
+        grandTotal
+      }, null, 2)
+    )
+  }, [selectedProducts, discounts, grandTotal])
 
   return (
     <div>
@@ -49,7 +67,7 @@ function TotalSummary ({ onSelectionConfirmation }) {
         <GrandTotal>{grandTotal} €</GrandTotal>
       </PriceDetails>
       <Button
-        onClick={onSelectionConfirmation}
+        onClick={handleSelectionConfirmation}
       >
         Checkout
       </Button>
