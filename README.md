@@ -447,6 +447,16 @@ This is the result of the aforementioned optimizations and some others made by t
 
 As you can see only the affected parts are re-rendered.
 
+## Future improvements
+
+Here are some improvements that would be beneficial in a real-case scenario:
+
+- **Code splitting**: As the product grows it will be necessary to implement code splitting in order to reduce the initial bundle size and reduce the total blocking time, this becomes specially important when using styled-components. For now though it is not necessary.
+
+- **Nicer animations**: Loading the list, opening and closing dialogs, etc. All the user interactions are so rough. It will be better to add some micro animations to improve the UX.
+
+- **Design tokens**: It would be lovely to agree on some design standards with the design team and create some tokens and utilities for applying color, spacing, typography etc. I think that it really improves maintainability. But I think it should not be done from the beginning, it is better to let the product mature a bit to see the patterns arise.
+
 ## Final notes
 
 I like to put all my love in the things I do, and so I did in this small project. I enjoyed it so much and regardless of the result I hope you also enjoyed the review.
