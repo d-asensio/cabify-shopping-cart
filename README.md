@@ -150,6 +150,8 @@ console.log(discountRules instanceof DiscountRulesBulkPercentage)
 
 `DiscountRulesBuy1Get2` and `DiscountRulesBulkPercentage` are classes that share a common interface: Both receive a `options` object as the single constructor parameter and have a public method `calculateFor(products)` that calculates the discounted amount from a list of `Product`s.
 
+> This follows the [strategy pattern](https://en.wikipedia.org/wiki/Strategy_pattern), the concrete implementations of `DiscountRules` receive a context (the `options` object) and each follow a different *strategy* to calculate the discounts.
+
 As an example of that interface using the `DiscountRulesBuy1Get2` discount rules:
 
 ```js
