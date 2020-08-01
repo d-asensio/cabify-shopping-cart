@@ -2,13 +2,13 @@ import memoize from 'lodash.memoize'
 
 import Checkout from '../../checkout'
 
-const initCheckoutService = function ({ fetch = window.fetch } = {}) {
-  const SERVICE_URL = '/data'
+const initCheckoutService = function ({ fetch = window.fetch, hostUrl = '' } = {}) {
+  const baseUrl = `${hostUrl}/data`
 
   let checkout = null
 
   const _getServiceData = memoize(async (dataPath) => {
-    const response = await fetch(`${SERVICE_URL}/${dataPath}.json`)
+    const response = await fetch(`${baseUrl}/${dataPath}.json`)
     return response.json()
   })
 

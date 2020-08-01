@@ -13,7 +13,7 @@ describe('initialization', () => {
     }).not.toThrowError()
   })
 
-  it('do not fail when it is initialized with an empty dependencies object', () => {
+  it('do not fail when it is initialized with an empty object', () => {
     expect(() => {
       initCheckoutService({})
     }).not.toThrowError()
@@ -32,6 +32,23 @@ describe('getAvailableProducts', () => {
       fetch.mock.calls[0][0]
     ).toBe(
       '/data/products.json'
+    )
+  })
+
+  it('hits the right API endpoint prepended by the specified baseUrl', async () => {
+    const fetch = createFetchMock(() => [])
+
+    const checkoutService = initCheckoutService({
+      fetch,
+      hostUrl: 'http://test.host'
+    })
+
+    await checkoutService.getAvailableProducts()
+
+    expect(
+      fetch.mock.calls[0][0]
+    ).toBe(
+      'http://test.host/data/products.json'
     )
   })
 
@@ -89,6 +106,29 @@ describe('getSummaryForSelection', () => {
       fetch.mock.calls[1][0]
     ).toBe(
       '/data/discounts.json'
+    )
+  })
+
+  it('hits the right API endpoint prepended by the specified baseUrl', async () => {
+    const fetch = createFetchMock(() => [])
+
+    const checkoutService = initCheckoutService({
+      fetch,
+      hostUrl: 'http://test.host'
+    })
+
+    await checkoutService.getSummaryForSelection([])
+
+    expect(
+      fetch.mock.calls[0][0]
+    ).toBe(
+      'http://test.host/data/products.json'
+    )
+
+    expect(
+      fetch.mock.calls[1][0]
+    ).toBe(
+      'http://test.host/data/discounts.json'
     )
   })
 
