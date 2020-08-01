@@ -1,3 +1,4 @@
+export { default as CodeCaption } from './CodeCaption'
 export { default as DiscountList } from './DiscountList'
 export { default as OrderSummary } from './OrderSummary'
 export { default as ProductDescription } from './ProductDescription'

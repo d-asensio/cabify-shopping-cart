@@ -4,6 +4,8 @@ import styled from 'styled-components'
 
 import { Heading } from '../primitives'
 
+import CodeCaption from './CodeCaption'
+
 const Wrapper = styled.div`
   margin-bottom: 32px;
 `
@@ -26,16 +28,6 @@ const Description = styled.p`
   color: #212240;
 `
 
-const CodeCaption = styled.span`
-  font-size: 12px;
-  font-weight: 400;
-
-  line-height: 16px;
-  letter-spacing: 0.13px;
-
-  color: #a6a7b3;
-`
-
 function ProductInfo ({ name, price, code, description }) {
   return (
     <Wrapper>
@@ -46,9 +38,7 @@ function ProductInfo ({ name, price, code, description }) {
       <Description>
         {description}
       </Description>
-      <CodeCaption>
-        Product code {code}
-      </CodeCaption>
+      <CodeCaption code={code} />
     </Wrapper>
   )
 }

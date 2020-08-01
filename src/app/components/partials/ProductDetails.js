@@ -4,6 +4,8 @@ import styled from 'styled-components'
 
 import { Thumbnail } from '../primitives'
 
+import CodeCaption from './CodeCaption'
+
 const Wrapper = styled.button.attrs(() => ({
   role: 'button'
 }))`
@@ -42,16 +44,6 @@ const Name = styled.span`
   color: #7350ff;
 `
 
-const CodeCaption = styled.span`
-  font-size: 12px;
-  font-weight: 400;
-
-  line-height: 16px;
-  letter-spacing: 0.13px;
-
-  color: #a6a7b3;
-`
-
 function ProductDetails ({
   name,
   code,
@@ -68,7 +60,7 @@ function ProductDetails ({
       />
       <Description>
         <Name>{name}</Name>
-        <CodeCaption>Product code {code}</CodeCaption>
+        <CodeCaption code={code} />
       </Description>
     </Wrapper>
   )
