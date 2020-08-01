@@ -4,7 +4,9 @@ import styled from 'styled-components'
 
 import { Thumbnail } from '../primitives'
 
-const Wrapper = styled.button`
+const Wrapper = styled.button.attrs(() => ({
+  role: 'button'
+}))`
   display: flex;
   align-items: center;
 
@@ -62,7 +64,7 @@ function ProductDetails ({
     >
       <Thumbnail
         src={thumbnailSrc}
-        alt={name}
+        alt={`${name} thumbnail`}
       />
       <Description>
         <Name>{name}</Name>

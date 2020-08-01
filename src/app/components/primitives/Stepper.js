@@ -9,7 +9,9 @@ const Wrapper = styled.div`
   align-items: center;
 `
 
-const CountButton = styled.button`
+const CountButton = styled.button.attrs(() => ({
+  role: 'button'
+}))`
     font-size: 20px;
     font-weight: 700;
 
@@ -51,17 +53,19 @@ const InputNumber = styled.input.attrs({
   }
 `
 
-function Stepper ({ value, onChange, onDecrease, onIncrease }) {
+function Stepper ({ className, value, onChange, onDecrease, onIncrease, ...rest }) {
   const inputProps = useControlledInputNumber({ value, onChange })
 
   return (
-    <Wrapper>
+    <Wrapper
+      className={className}
+    >
       <CountButton
         onClick={onDecrease}
       >
         -
       </CountButton>
-      <InputNumber {...inputProps} />
+      <InputNumber {...rest} {...inputProps} />
       <CountButton
         onClick={onIncrease}
       >

@@ -4,7 +4,9 @@ import styled from 'styled-components'
 
 import Icon from './Icon'
 
-const Wrapper = styled.button`
+const Wrapper = styled.button.attrs(() => ({
+  role: 'button'
+}))`
   cursor: pointer;
 
   padding: 0;

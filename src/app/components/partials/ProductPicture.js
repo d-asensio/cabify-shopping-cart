@@ -28,7 +28,7 @@ function ProductPicture ({ id }) {
     >
       <Picture
         src={imageSrc}
-        alt={name}
+        alt={`${name} image`}
       />
     </FixedAspectRatio>
   )

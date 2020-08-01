@@ -67,6 +67,7 @@ function ProductLine ({ id }) {
       />
       <Stepper
         value={quantity}
+        aria-label={`${name} quantity`}
         onChange={handleQuantityChange}
         onDecrease={handleDecrease}
         onIncrease={handleIncrease}

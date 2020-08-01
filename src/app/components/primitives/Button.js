@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
-const Button = styled.button`
+const Button = styled.button.attrs(() => ({
+  role: 'button'
+}))`
   font-size: 16px;
   font-weight: bold;
 
