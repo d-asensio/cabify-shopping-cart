@@ -25,12 +25,10 @@ const setColumnAlignments = columnAlignments => css`
   > ${Row} {
     ${columnAlignments.map((alignment, i) => css`
       > *:nth-child(${i + 1}) {
-        justify-self: ${
-          {
-            left: 'start',
-            right: 'end'
-          }[alignment] || 'center'
-        };
+        justify-self: ${{
+          left: 'start',
+          right: 'end'
+        }[alignment] || 'center'};
       }
     `)}
   }
