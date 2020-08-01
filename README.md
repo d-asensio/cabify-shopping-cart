@@ -2,6 +2,18 @@
 
 This document attempts to explain the big picture of the code and the architecture it follows, and also give insight about the intentions behind it. Thank you for taking the time to read and review.
 
+## Set up the project
+
+First things first! Before explaining anything else, here is a handy command to initialize the project:
+
+```bash
+yarn ; yarn dev
+```
+
+This will serve the app in development mode to the port `:8080`.
+
+There are more scripts available, I describe them shortly at the [scripts section](#scripts).
+
 ## Introduction
 
 To write quality software one has to find the right balance between business needs and mid-to-long term code maintainability. It's everything about understanding the context, not only the technical context but also the product context.
@@ -47,6 +59,17 @@ These are the main ones, but I also used others (`redux-saga`, `reselect`, `re-r
 You won't find many comments on the code, there are some *quick explanations* about the responsibilities of some parts of the code, but not very in-depth. There are also some *clarifications* about code in this document, especially at the [architecture overview section](#architecture-overview).
 
 In general, I prefer to put my efforts on writing clean code more than in explaining what is the intention of an intricate code.
+
+## Scripts
+
+Here is the list of scripts that are supported:
+
+- `dev`: Start the development server at the port `:8080`.
+- `build`: Create a build artifact to the `build/` folder.
+- `lint`: Use `standardjs` to check the code style.
+- `lint:fix`: Attempt to fix the code style.
+- `test`: Run all the tests once.
+- `test:watch`: Watch file changes and run the related tests.
 
 ## Testing
 
