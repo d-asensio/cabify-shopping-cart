@@ -161,7 +161,7 @@ it('clear selection by writting', async () => {
   ).toHaveAttribute('value', '0')
 })
 
-it('open product dialog and add to cart', async () => {
+it('open product modal and add to cart', async () => {
   const { findByAltText, findByText, findByLabelText } = render(<App />)
 
   const shirtImage = await findByAltText('Shirt thumbnail')
@@ -172,6 +172,25 @@ it('open product dialog and add to cart', async () => {
   const addToCartButton = await findByText('Add to cart')
 
   await userEvent.click(addToCartButton)
+
+  const shirtInput = await findByLabelText('Shirt quantity')
+
+  expect(
+    shirtInput
+  ).toHaveAttribute('value', '1')
+})
+
+it('open product modal and close', async () => {
+  const { findByAltText, findByLabelText } = render(<App />)
+
+  const shirtImage = await findByAltText('Shirt thumbnail')
+  const shirtInfoButton = shirtImage.closest('button')
+
+  await userEvent.click(shirtInfoButton)
+
+  const closeModalButton = await findByLabelText('Close modal')
+
+  await userEvent.click(closeModalButton)
 
   const shirtInput = await findByLabelText('Shirt quantity')
 

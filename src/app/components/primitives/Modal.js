@@ -37,7 +37,12 @@ const CloseButton = styled(ButtonIcon).attrs(() => ({
 function Modal ({ closable, children, onCloseClick }) {
   return (
     <Wrapper>
-      {closable && <CloseButton onClick={onCloseClick} />}
+      {closable && (
+        <CloseButton
+          aria-label='Close modal'
+          onClick={onCloseClick}
+        />
+      )}
       {children}
     </Wrapper>
   )
