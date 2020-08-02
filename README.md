@@ -28,7 +28,7 @@ The fact that this is a code challenge and not a real product does not mean that
 
 However, these are general considerations. To understand the context we have to focus on the nature of the product, what we know about similar products, and how it will likely evolve in future iterations if it were supposed to suit a real case scenario.
 
-Acting as a product owner, this is what I think is prone to change in a product like this (mini online store):
+Impersonating the product owner, this is what I think is prone to change in a product like this (mini online store):
 
 - The price of the products
 - Discount rules
@@ -43,7 +43,7 @@ The technical context is more open in this case, this is a greenfield project so
 
 I made my choices taking into account the product needs, striving for fast development to produce maintainable, reliable, and clean code.
 
-- **React:** This is the choice that makes more sense since it is the UI library that I am most proficient on and the one you use at Cabify.
+- **React:** This is the choice that makes more sense since it is the UI library that I am most proficient in and the one you use at Cabify.
 
 - **Styled-components:** CSS-in-JS is controversial I know, but it is good for fast-paced development, simplifies a lot the building toolset, and helps in writing semantic and understandable code. I think it is ideal for this project since it is small and the drawback of the bundle size will not be noticeable. In a different project with different needs, I would probably use SASS with a BEMIT architecture, I am pretty comfy working this way as well.
 
@@ -75,17 +75,17 @@ Here is the list of scripts that are supported:
 
 This application is thoroughly tested but I did not use the same methodology for all the parts:
 
-- **Checkout class, reducers, selectors and sagas**: I used TDD for designing these parts because can be easily unit-tested, and actually TDD helps in the design.
+- **Checkout class, reducers, selectors and sagas**: For these parts, I used test-driven development because can be broken down in small parts, are deterministic, and perform a very specific task, in other words: Can be easily unit-tested.
 
-- **Components**: I did not use TDD for the components because it does not help with the development process, its more quite the opposite. At the first phase of development components interface is very volatile and writing tests is a nuisance that do not add a lot of value. I try to keep the components as simple as possible, do not write tests from the beginning and when these clearly reach a good maturity point, then I write some integration tests.
+- **Components**: I did not use TDD for the components because it does not help with the development process, its more quite the opposite. In the first phase, the components interface is very volatile and writing tests is a nuisance that does not add a lot of value. Instead, I try to keep the components as simple as possible, do not write tests from the beginning and when these clearly reach a good maturity point, I write integration tests.
 
 ## Component organization
 
-The components are organized into three categories:
+I organized components are organized into three categories:
 
-- **Primitives**: The most atomic building blocks. The components under this category o not contain application-specific logic and they could be potentially extracted into a design system.
+- **Primitives**: The most atomic building blocks. Components under this category do not contain application-specific logic and could be potentially extracted into a design system.
 
-- **Partials**: These are build from **primitives** and contain application-specific logic and naming.
+- **Partials**: These are built from **primitives** and contain application-specific logic and naming.
 
 - **Views**: Fully functional parts of the application composed by **partials**.
 
@@ -269,7 +269,7 @@ This is an example of the [dependency inversion principle](https://en.wikipedia.
 
 The high-level module in our example is the `Counter` and the low-level is the `Stepper`, the first's logic does not depend on the latter, they communicate through an event-based interface.
 
-To conclude, I would like to remark on an implementation detail of the `Stepper`. It uses a custom hook `useControlledInputNumber` to sanitize the input of the user by enforcing numerical values while allowing to edit the value. I thought it could be useful for other people so I extracted it from this codebase and open-sourced it. You can find more details about it [here](https://github.com/d-asensio/use-controlled-input-number).
+To conclude, I would like to remark on an implementation detail of the `Stepper`. It uses a custom hook `useControlledInputNumber` to sanitize the input of the user by enforcing numerical values while allowing them to edit the value. I thought it could be useful for other people so I extracted it from this codebase and open-sourced it. You can find more details about it [here](https://github.com/d-asensio/use-controlled-input-number).
 
 #### Updating the state
 
@@ -476,11 +476,11 @@ As you can see only the affected parts are re-rendered.
 
 Here are some improvements that would be beneficial in a real-case scenario:
 
-- **Code splitting**: As the product grows it will be necessary to implement code splitting in order to reduce the initial bundle size and reduce the total blocking time, this becomes specially important when using styled-components. For now though it is not necessary.
+- **Code splitting**: As the product grows it will be necessary to implement code splitting in order to reduce the initial bundle size and reduce the total blocking time, this becomes especially important when using styled-components. For now, though it is not necessary.
 
-- **Nicer animations**: Loading the list, opening and closing dialogs, etc. All the user interactions are so rough. It will be better to add some micro animations to improve the UX.
+- **Nicer animations**: Loading the list, opening, and closing dialogs, etc. All the user interactions are so rough. It will be better to add some micro animations to improve the UX.
 
-- **Design tokens**: It would be lovely to agree on some design standards with the design team and create some tokens and utilities for applying color, spacing, typography etc. I think that it really improves maintainability. But I think it should not be done from the beginning, it is better to let the product mature a bit to see the patterns arise.
+- **Design tokens**: It would be lovely to agree on design standards with the design team and create some tokens and utilities for applying color, spacing, typography, etc. I think that this really improves maintainability and consistency. But in my opinion, it should not be done from the beginning, it is better to let the product mature a bit to see the patterns arise.
 
 ## Final notes
 
