@@ -2,7 +2,7 @@ import memoize from 'lodash.memoize'
 
 import Checkout from '../../checkout'
 
-const initCheckoutService = function ({ fetch = window.fetch, hostUrl = '' } = {}) {
+function initCheckoutService ({ fetch = window.fetch, hostUrl = '' } = {}) {
   const baseUrl = `${hostUrl}/data`
 
   let checkout = null
