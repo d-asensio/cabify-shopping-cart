@@ -91,7 +91,7 @@ I organized components are organized into three categories:
 
 ## Architecture overview
 
-This section is divided into three parts: [Checkout class](#checkout-class), [App state](#app-state) and [Checkout and app link](#checkout-and-app-link).
+This section is divided into three parts: [Checkout class](#checkout-class), [App state](#app-state) and [Checkout and app interaction](#checkout-and-app-interaction).
 
 ### Checkout class
 
@@ -344,7 +344,7 @@ This pattern creates a contract between the components and the state, providing 
 
 ### Checkout and app interaction
 
-I have described the checkout class and the app, but how they link together?
+I have described the checkout class and the app, but how they interact together?
 
 In my opinion, the frontend should be as "dummy" as possible: It should contain the minimum amount of business logic and in case that it is unavoidable, the business logic should be isolated from the presentation layer.
 
