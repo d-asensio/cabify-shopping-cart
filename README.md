@@ -75,13 +75,13 @@ Here is the list of scripts that are supported:
 
 This application is thoroughly tested but I did not use the same methodology for all the parts:
 
-- **Checkout class, reducers, selectors and sagas**: For these parts, I used test-driven development because can be broken down in small parts, are deterministic, and perform a very specific task, in other words: Can be easily unit-tested.
+- **Checkout class, reducers, selectors and sagas**: For these parts, I used test-driven development because they can be broken down in small parts, are deterministic, and perform a very specific task, in other words: Can be easily unit-tested.
 
-- **Components**: I did not use TDD for the components because it does not help with the development process, its more quite the opposite. In the first phase, the components interface is very volatile and writing tests is a nuisance that does not add a lot of value. Instead, I try to keep the components as simple as possible, do not write tests from the beginning and when these clearly reach a good maturity point, I write integration tests.
+- **Components**: I did not use TDD for the components because it does not help with the development process, its more quite the opposite. In the first development phase, components interface is very volatile and writing tests is a nuisance that does not add a lot of value. Instead, I try to keep components as simple as possible, do not write tests from the beginning and when these clearly reach a good maturity point, I write integration tests.
 
 ## Component organization
 
-I organized components are organized into three categories:
+Components are organized into three categories:
 
 - **Primitives**: The most atomic building blocks. Components under this category do not contain application-specific logic and could be potentially extracted into a design system.
 
@@ -199,7 +199,7 @@ This pattern is very convenient in this case. Heading back to the [product conte
 
 ### App state
 
-The app is responsible for handling the user input and updating the state that **can be derived from that input without applying any business logic**. The business logic is instead handled by the checkout class.
+The app is responsible for handling the user input and updating the state that **can be derived from that input without applying any business logic**. The business logic is instead managed by the checkout class.
 
 Here you can differentiate the parts of the app:
 
@@ -476,9 +476,9 @@ As you can see only the affected parts are re-rendered.
 
 Here are some improvements that would be beneficial in a real-case scenario:
 
-- **Code splitting**: As the product grows it will be necessary to implement code splitting in order to reduce the initial bundle size and reduce the total blocking time, this becomes especially important when using styled-components. For now, though it is not necessary.
+- **Code splitting**: As the product grows it will be necessary to implement code splitting in order to reduce the initial bundle size and reduce the total blocking time, this becomes especially important when using styled-components. However, it is not necessary for now.
 
-- **Nicer animations**: Loading the list, opening, and closing dialogs, etc. All the user interactions are so rough. It will be better to add some micro animations to improve the UX.
+- **Nicer animations**: Loading the list, opening and closing dialogs, etc. All the user interactions are so rough. It will be better to add some micro animations to improve the UX.
 
 - **Design tokens**: It would be lovely to agree on design standards with the design team and create some tokens and utilities for applying color, spacing, typography, etc. I think that this really improves maintainability and consistency. But in my opinion, it should not be done from the beginning, it is better to let the product mature a bit to see the patterns arise.
 
